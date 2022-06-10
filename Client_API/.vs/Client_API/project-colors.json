@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "41a95937-0370-4ea2-9010-5ec0fe8d78b7": {
+      "ProjectGuid": "41a95937-0370-4ea2-9010-5ec0fe8d78b7",
+      "DisplayName": "Client_VIewCodeInit",
+      "ColorIndex": 0
+    },
+    "ac9dc9c8-3c03-4844-bb98-d0105f6b1e62": {
+      "ProjectGuid": "ac9dc9c8-3c03-4844-bb98-d0105f6b1e62",
+      "DisplayName": "Client_winApIFirstView",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
