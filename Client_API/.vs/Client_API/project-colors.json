@@ -25,7 +25,17 @@
       "ProjectGuid": "c107d666-1863-48c2-9f55-9307daea167d",
       "DisplayName": "Client_02_CAPIEngine",
       "ColorIndex": 3
+    },
+    "f6f9c2b0-2098-40a1-b47a-82887f9e0f66": {
+      "ProjectGuid": "f6f9c2b0-2098-40a1-b47a-82887f9e0f66",
+      "DisplayName": "Client_03_CAPIEngine2",
+      "ColorIndex": 4
+    },
+    "ad0143ec-993b-4dbb-be08-65d9fd02c0aa": {
+      "ProjectGuid": "ad0143ec-993b-4dbb-be08-65d9fd02c0aa",
+      "DisplayName": "Client_04_CAPIEngine3",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 6
 }

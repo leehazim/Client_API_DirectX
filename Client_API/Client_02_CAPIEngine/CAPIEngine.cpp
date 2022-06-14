@@ -23,31 +23,51 @@ BOOL CAPIEngine::Create(HINSTANCE hInstance, int nCmdShow) {
 
 MSG CAPIEngine::Run() {
     HACCEL hAccelTable = LoadAccelerators(hInst, MAKEINTRESOURCE(IDC_CLIENTVIEWCODEINIT));
-    MSG msg;
+    MSG msg = { 0 };
 
-    // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    OnCreate();
+    /*while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
+    }*/
+    
+    // 루프 수정
+    while (msg.message != WM_QUIT) {
+        // PeekMessage 메시지 있으면 true 없으면 false
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+        else {
+            OnUpdate();
+        }
     }
+
+    OnDestroy();
 
     return msg;
 }
 
 void CAPIEngine::OnCreate() {
-
+    WCHAR szTemp[256] = L"";
+    wsprintf(szTemp, L"CAPIEngine::OnCreate\n");
+    OutputDebugString(szTemp);
 }
 
 void CAPIEngine::OnDestroy() {
-
+    WCHAR szTemp[256] = L"";
+    wsprintf(szTemp, L"CAPIEngine::OnDestroy\n");
+    OutputDebugString(szTemp);
 }
 
 void CAPIEngine::OnUpdate() {
-
+    /*WCHAR szTemp[256] = L"";
+    wsprintf(szTemp, L"CAPIEngine::OnUpdate\n");
+    OutputDebugString(szTemp);*/
 }
 
 ATOM CAPIEngine::MyRegisterClass(HINSTANCE hInstance) {
@@ -75,10 +95,18 @@ BOOL CAPIEngine::InitInstance(HINSTANCE hInstance, int nCmdShow) {
 
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
                               CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
-
+    
     if (!hWnd) {
         return FALSE;
     }
+    // 화면 크기 재설정
+    RECT rt= {0, 0, 800, 600};
+    
+    // 입력한 렉트 구조체에 있는 크기만큼의 클라이언트 렉트로 설정되도록 캡션과 메뉴의 크기를 추가한 렉트값으로 전달한 입출력(lpRect)에 저장
+    AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, TRUE);
+    SetWindowPos(hWnd, HWND_TOPMOST, 100, 100,
+                 rt.right - rt.left, rt.bottom - rt.top, SWP_NOMOVE | SWP_NOZORDER);
+
     ShowWindow(hWnd, nCmdShow);
     UpdateWindow(hWnd);
 
@@ -111,7 +139,7 @@ LRESULT CAPIEngine::WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+        //TODO : 
         EndPaint(hWnd, &ps);
     }
     break;

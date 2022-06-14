@@ -27,4 +27,10 @@ protected:
 	static HINSTANCE hInst;
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 	static INT_PTR CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+private:
+	CAPIEngine(const CAPIEngine& other) {
+		memset(szWindowClass, 0, MAX_LOADSTRING * sizeof(WCHAR));
+		memset(szTitle, 0, MAX_LOADSTRING * sizeof(WCHAR));
+	}
+	CAPIEngine& operator=(const CAPIEngine& other) {}
 };
