@@ -1,2 +1,5 @@
-﻿  main.cpp
+﻿  CAPIEngine.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_03_CAPIEngine2\CAPIEngine.cpp(140,15): warning C4101: 'str' :참조되지 않은 지역 변수입니다.
+  main.cpp
+  코드를 생성하고 있습니다...
   Client_04_CAPIEngine3.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\x64\Debug\Client_04_CAPIEngine3.exe

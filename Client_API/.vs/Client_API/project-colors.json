@@ -35,7 +35,27 @@
       "ProjectGuid": "ad0143ec-993b-4dbb-be08-65d9fd02c0aa",
       "DisplayName": "Client_04_CAPIEngine3",
       "ColorIndex": 5
+    },
+    "fa1a6173-07d8-436f-9875-e002a371578b": {
+      "ProjectGuid": "fa1a6173-07d8-436f-9875-e002a371578b",
+      "DisplayName": "Client_05_CAPIEngine4",
+      "ColorIndex": 6
+    },
+    "23e27970-5671-4ca4-9ae6-143ebcfa6235": {
+      "ProjectGuid": "23e27970-5671-4ca4-9ae6-143ebcfa6235",
+      "DisplayName": "Client_05_CAPIEngine",
+      "ColorIndex": 7
+    },
+    "53218e9f-d65b-4b63-b437-f2d432f56ff8": {
+      "ProjectGuid": "53218e9f-d65b-4b63-b437-f2d432f56ff8",
+      "DisplayName": "Client_05_CUnit",
+      "ColorIndex": 8
+    },
+    "837b4578-0a05-47ed-ab6a-6372db6f5bc4": {
+      "ProjectGuid": "837b4578-0a05-47ed-ab6a-6372db6f5bc4",
+      "DisplayName": "Client_06_Buffering",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 10
 }

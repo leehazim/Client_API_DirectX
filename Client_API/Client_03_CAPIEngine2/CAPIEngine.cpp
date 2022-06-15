@@ -57,7 +57,7 @@ void CAPIEngine::OnDestroy() {
 }
 
 void CAPIEngine::OnUpdate() {
-   /* TextOut(m_hDC, 0, 0, L"Test Text", lstrlen(L"Test Text"));
+    /*TextOut(m_hDC, 0, 0, L"Test Text", lstrlen(L"Test Text"));
     TextOut(m_hDC, 0, 25, L"Hi Window", lstrlen(L"Hi Window"));
     TextOut(m_hDC, 0, 50, L"æ»≥Á«œººø‰", lstrlen(L"æ»≥Á«œººø‰"));
 

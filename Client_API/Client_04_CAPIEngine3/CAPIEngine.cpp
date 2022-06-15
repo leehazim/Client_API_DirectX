@@ -23,29 +23,23 @@ BOOL CAPIEngine::Create(HINSTANCE hInstance, int nCmdShow) {
 
 MSG CAPIEngine::Run() {
     HACCEL hAccelTable = LoadAccelerators(hInst, MAKEINTRESOURCE(IDC_CLIENTVIEWCODEINIT));
-    MSG msg = {0};
+    MSG msg = { 0 };
 
+    m_hDC = GetDC(m_hWnd);
     OnCreate();
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
-    /*
+
     while (msg.message != WM_QUIT) {
-        if (!PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
         else {
             OnUpdate();
         }
-    }*/
+    }
 
     OnDestroy();
+    ReleaseDC(m_hWnd, m_hDC);
 
     return msg;
 }
@@ -63,9 +57,19 @@ void CAPIEngine::OnDestroy() {
 }
 
 void CAPIEngine::OnUpdate() {
-    WCHAR szTemp[256] = L"";
-    wsprintf(szTemp, L"CAPIEngine::OnUpdate\n");
-    OutputDebugString(szTemp);
+   /* TextOut(m_hDC, 0, 0, L"Test Text", lstrlen(L"Test Text"));
+    TextOut(m_hDC, 0, 25, L"Hi Window", lstrlen(L"Hi Window"));
+    TextOut(m_hDC, 0, 50, L"안녕하세요", lstrlen(L"안녕하세요"));
+
+    LPCWSTR tString = L"WCHAR string";
+    TextOut(m_hDC, 0, 75, tString, lstrlen(tString));
+
+    Rectangle(m_hDC, 100, 100, 200, 200);
+
+    MoveToEx(m_hDC, 100, 100, NULL);
+    LineTo(m_hDC, 200, 200);
+
+    Ellipse(m_hDC, 210, 100, 310, 200);*/
 }
 
 ATOM CAPIEngine::MyRegisterClass(HINSTANCE hInstance) {
@@ -89,16 +93,21 @@ ATOM CAPIEngine::MyRegisterClass(HINSTANCE hInstance) {
 }
 
 BOOL CAPIEngine::InitInstance(HINSTANCE hInstance, int nCmdShow) {
-    hInst = hInstance; 
+    hInst = hInstance;
 
-    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-                              CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+    m_hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+                           CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-    if (!hWnd) {
+    if (!m_hWnd) {
         return FALSE;
     }
-    ShowWindow(hWnd, nCmdShow);
-    UpdateWindow(hWnd);
+
+    RECT rt = { 0,0, 800, 600 };
+    AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, TRUE);
+    SetWindowPos(m_hWnd, HWND_TOPMOST, 100, 100, rt.right - rt.left, rt.bottom - rt.top, SWP_NOMOVE | SWP_NOZORDER);
+
+    ShowWindow(m_hWnd, nCmdShow);
+    UpdateWindow(m_hWnd);
 
     return TRUE;
 }
@@ -112,7 +121,7 @@ LRESULT CAPIEngine::WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
         // 메뉴 선택을 구문 분석합니다:
         switch (wmId)
         {
-        case IDM_ABOUT: 
+        case IDM_ABOUT:
         {
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, DlgProc);
             break;
@@ -129,7 +138,6 @@ LRESULT CAPIEngine::WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
         EndPaint(hWnd, &ps);
     }
     break;

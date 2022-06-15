@@ -30,6 +30,7 @@ protected:
 
 	HWND m_hWnd;
 	HDC m_hDC;
+
 private:
 	CAPIEngine(const CAPIEngine& other) {
 		memset(szWindowClass, 0, MAX_LOADSTRING * sizeof(WCHAR));

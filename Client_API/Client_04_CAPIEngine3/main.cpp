@@ -1,6 +1,6 @@
 #include "CAPIEngine.h"
 
-class LSHEngine 
+class LSHEngine
 	: public CAPIEngine {
 public:
 	LSHEngine() {
@@ -18,6 +18,8 @@ public:
 		WCHAR szTemp[256] = L"";
 		wsprintf(szTemp, L"LSHEngine::OnCreate\n");
 		OutputDebugString(szTemp);
+
+		
 	}
 	virtual void OnDestroy() override {
 		// TODO : 게임 정리
@@ -26,25 +28,31 @@ public:
 	}
 	virtual void OnUpdate() override {
 		CAPIEngine::OnUpdate();
-		// TODO : 게임 갱신
+		TextOut(m_hDC, 0, 0, L"Test Text", lstrlen(L"Test Text"));
+		TextOut(m_hDC, 0, 25, L"Hi Window", lstrlen(L"Hi Window"));
+		TextOut(m_hDC, 0, 50, L"안녕하세요", lstrlen(L"안녕하세요"));
+
+		LPCWSTR tString = L"WCHAR string";
+		TextOut(m_hDC, 0, 75, tString, lstrlen(tString));
+
+		Rectangle(m_hDC, 100, 100, 200, 200);
+
+		MoveToEx(m_hDC, 100, 100, NULL);
+		LineTo(m_hDC, 200, 200);
+
+		Ellipse(m_hDC, 210, 100, 310, 200);
 	}
 
-	// 복사 생성과 복사대입 금지를 위해 접근 제한
 private:
 	LSHEngine(const LSHEngine& other) {}
 	LSHEngine& operator=(const LSHEngine& other) {}
 };
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
-	
+
 	LSHEngine Game;
 	Game.Create(hInstance, nCmdShow);
 	MSG msg = Game.Run();
-	
-	// 엔진 클래스의 복사생성이나 대입이 일어나는 것을 막기
-	/*LSHEngine tA = Game;
-	LSHEngine tB;
-	tB = tA;*/
 
 	return (int)msg.wParam;
 }
