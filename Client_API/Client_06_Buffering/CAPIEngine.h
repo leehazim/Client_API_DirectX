@@ -27,9 +27,9 @@ protected:
 	WCHAR szTitle[MAX_LOADSTRING];
 	WCHAR szWindowClass[MAX_LOADSTRING];
 
-	static HINSTANCE hInst;
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 	static INT_PTR CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+	static HINSTANCE hInst;
 
 	HWND m_hWnd;
 	HDC m_hDC;

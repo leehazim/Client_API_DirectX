@@ -55,7 +55,12 @@
       "ProjectGuid": "837b4578-0a05-47ed-ab6a-6372db6f5bc4",
       "DisplayName": "Client_06_Buffering",
       "ColorIndex": 9
+    },
+    "6f2ed7b4-7029-4526-a208-66d5e26985bd": {
+      "ProjectGuid": "6f2ed7b4-7029-4526-a208-66d5e26985bd",
+      "DisplayName": "Client_07_DoubleBuffer",
+      "ColorIndex": 10
     }
   },
-  "NextColorIndex": 10
+  "NextColorIndex": 11
 }

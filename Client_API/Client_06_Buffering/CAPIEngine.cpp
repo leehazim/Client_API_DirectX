@@ -7,9 +7,7 @@ CAPIEngine::CAPIEngine() {
     memset(szTitle, 0, MAX_LOADSTRING * sizeof(WCHAR));
 }
 
-CAPIEngine::~CAPIEngine() {
-
-}
+CAPIEngine::~CAPIEngine() {}
 
 BOOL CAPIEngine::Create(HINSTANCE hInstance, int nCmdShow) {
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);

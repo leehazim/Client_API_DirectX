@@ -1,2 +1,11 @@
-﻿  main.cpp
+﻿  CAPIEngine.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_06_Buffering\CAPIEngine.cpp(172,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_06_Buffering\CAPIEngine.cpp(172,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_06_Buffering\CAPIEngine.cpp(171,37): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_06_Buffering\CAPIEngine.cpp(171,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CTexture.cpp
+  main.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_06_Buffering\main.cpp(71,26): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_06_Buffering\main.cpp(71,13): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
   Client_06_Buffering.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\x64\Debug\Client_06_Buffering.exe
