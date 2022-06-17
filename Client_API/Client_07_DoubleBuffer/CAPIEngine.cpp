@@ -27,8 +27,9 @@ MSG CAPIEngine::Run() {
 
     m_hDC = GetDC(m_hWnd);
     m_pBackBuffer = new  CTexture();
-    m_pBackBuffer->LoadTexture(hInst, m_hDC, L"resources/backbuffer_0.bmp");
-    
+    /*m_pBackBuffer->CreateBackBuffer(hInst, m_hDC);*/
+    RECT crt = { 0,0, m_ClientWidth, m_ClientHeight };
+    m_pBackBuffer->CreateBackBuffer(crt, hInst, m_hDC);
     OnCreate();
 
     while (msg.message != WM_QUIT) {
@@ -184,6 +185,7 @@ void CAPIEngine::DrawCircle(float tX, float tY, float tRadius) {
 }
 
 void CAPIEngine::DrawTexture(float tX, float tY, CTexture* tTexture) {
+    // 백버퍼에 비트맵을 그리기
     BitBlt(m_pBackBuffer->m_hMemDC,
            tX, tY,
            tTexture->m_Info.bmWidth, tTexture->m_Info.bmHeight,
@@ -197,6 +199,7 @@ void CAPIEngine::Clear() {
 }
 
 void CAPIEngine::Present() {
+    // 버퍼 갱신
     BitBlt(this->m_hDC,
            0, 0,
            m_ClientWidth, m_ClientHeight,

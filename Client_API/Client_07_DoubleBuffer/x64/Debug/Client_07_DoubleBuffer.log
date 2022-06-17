@@ -1,16 +1,22 @@
 ﻿  CAPIEngine.cpp
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(112,22): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(112,22): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(112,37): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(112,37): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(183,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(183,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(182,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(182,41): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(188,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(188,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(196,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(196,46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(202,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(202,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(31,23): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(31,23): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(31,38): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(31,38): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(113,22): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(113,22): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(113,37): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(113,37): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(184,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(184,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(183,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(183,41): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(190,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(190,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(198,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(198,46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(205,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_07_DoubleBuffer\CAPIEngine.cpp(205,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CTexture.cpp
+  코드를 생성하고 있습니다...
   Client_07_DoubleBuffer.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\x64\Debug\Client_07_DoubleBuffer.exe

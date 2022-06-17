@@ -60,7 +60,22 @@
       "ProjectGuid": "6f2ed7b4-7029-4526-a208-66d5e26985bd",
       "DisplayName": "Client_07_DoubleBuffer",
       "ColorIndex": 10
+    },
+    "f55999aa-a9a8-4c47-98f4-c6c242ed79c8": {
+      "ProjectGuid": "f55999aa-a9a8-4c47-98f4-c6c242ed79c8",
+      "DisplayName": "Client_08_Clear",
+      "ColorIndex": 11
+    },
+    "3764ac7d-b489-4a6d-83bb-5ff664edbe09": {
+      "ProjectGuid": "3764ac7d-b489-4a6d-83bb-5ff664edbe09",
+      "DisplayName": "Client_09_Pivot",
+      "ColorIndex": 12
+    },
+    "c3fb6dd4-7e2a-40d4-b7a1-46d58bc85e49": {
+      "ProjectGuid": "c3fb6dd4-7e2a-40d4-b7a1-46d58bc85e49",
+      "DisplayName": "Client_10_GameObject",
+      "ColorIndex": 13
     }
   },
-  "NextColorIndex": 11
+  "NextColorIndex": 14
 }
