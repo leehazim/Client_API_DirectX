@@ -14,7 +14,7 @@ int CObject::Release() {
 
 	if (m_Ref == 0) {
 		delete this;
-		return 0;
+		return 0 ;
 	}
 
 	return m_Ref;
