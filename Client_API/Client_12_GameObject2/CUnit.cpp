@@ -2,8 +2,11 @@
 #include "CAPIEngine.h"
 #include "CTexture.h"
 
-CUnit::CUnit() 
-	: m_X(400.0f), m_Y(500.0f), m_Radius(30.0f), m_pCTexture(nullptr) {}
+CUnit::CUnit() :
+	m_X(400.0f),
+	m_Y(500.0f),
+	m_Radius(30.0f),
+	m_pCTexture(nullptr) {}
 
 CUnit::~CUnit() {}
 

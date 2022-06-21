@@ -1,1 +1,6 @@
-﻿  CObject.cpp
+﻿  CUnit.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_12_GameObject2\CUnit.cpp(15,31): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_12_GameObject2\CUnit.cpp(16,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main.cpp
+  코드를 생성하고 있습니다...
+  Client_12_GameObject2.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\x64\Debug\Client_12_GameObject2.exe

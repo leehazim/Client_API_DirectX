@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\CAPIEngine">
+      <UniqueIdentifier>{4e3c1d25-e5fb-4bbe-94a4-0de8aedab319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\CTexture">
+      <UniqueIdentifier>{0840b58a-2141-429f-8ce4-994809481706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Base">
+      <UniqueIdentifier>{80e26aed-570e-4de5-99ef-6d81cdccbe03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Entry">
+      <UniqueIdentifier>{b49b7868-7c8e-4843-8d79-a1ba006eb414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object">
+      <UniqueIdentifier>{cff7dab2-385b-4834-a72c-301d8bb894f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\CRef">
+      <UniqueIdentifier>{f61b717b-d815-4054-aad1-814f001eba04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\CObject">
+      <UniqueIdentifier>{13b685e7-2eb9-49c2-be2f-7c4751507ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\CUnit">
+      <UniqueIdentifier>{055253be-956a-4e16-ba6a-ed03a9203603}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\SVector2D">
+      <UniqueIdentifier>{be0bff05-a1be-4db2-9e32-fda89ea93b02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputMgr">
+      <UniqueIdentifier>{81720867-4303-4391-af31-7c88bd9236ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\macro">
+      <UniqueIdentifier>{f7373464-df5e-4ade-a409-639b80e92bd4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CAPIEngine.cpp">
+      <Filter>소스 파일\CAPIEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>소스 파일\Object\CObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CRef.cpp">
+      <Filter>소스 파일\Object\CRef</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>소스 파일\CTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="CUnit.cpp">
+      <Filter>소스 파일\Object\CUnit</Filter>
+    </ClCompile>
+    <ClCompile Include="SVector2D.cpp">
+      <Filter>소스 파일\Object\SVector2D</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일\Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="CInputMgr.cpp">
+      <Filter>소스 파일\InputMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CAPIEngine.h">
+      <Filter>소스 파일\CAPIEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
+      <Filter>소스 파일\Object\CObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CRef.h">
+      <Filter>소스 파일\Object\CRef</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>소스 파일\CTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="CUnit.h">
+      <Filter>소스 파일\Object\CUnit</Filter>
+    </ClInclude>
+    <ClInclude Include="SVector2D.h">
+      <Filter>소스 파일\Object\SVector2D</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CInputMgr.h">
+      <Filter>소스 파일\InputMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="macro.h">
+      <Filter>헤더 파일\macro</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Client_VIewCodeInit.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client_VIewCodeInit.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

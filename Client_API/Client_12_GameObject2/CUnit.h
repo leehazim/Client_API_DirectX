@@ -1,11 +1,14 @@
 #pragma once
+#include "CObject.h"
 
 class CTexture;
 class CAPIEngine;
-class CUnit {
+
+class CUnit 
+	: public CObject {
 public:
 	CUnit();
-	~CUnit();
+	virtual ~CUnit();
 
 	CUnit(const CUnit& unit) {
 		m_X = unit.m_X;
@@ -23,6 +26,7 @@ public:
 	void SetTexture(CTexture* pCtexture);
 	
 	void SetAnchors(float anchorX = 0.5f, float anchorY = 0.5f);
+
 public:
 	// 연속적이 2차원 좌표를 가지기 위해 float
 	float m_X = 0.0f;

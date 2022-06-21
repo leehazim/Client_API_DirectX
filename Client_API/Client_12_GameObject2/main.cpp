@@ -61,6 +61,7 @@ public:
 		for (list<CObject*>::iterator it = m_Objects.begin(); it != m_Objects.end(); it++) {
 			if ((*it) != nullptr) {
 				(*it)->Release();
+				(*it) = nullptr;
 			}
 		}
 

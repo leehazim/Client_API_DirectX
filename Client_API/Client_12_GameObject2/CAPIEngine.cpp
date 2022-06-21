@@ -26,9 +26,8 @@ MSG CAPIEngine::Run() {
     MSG msg = { 0 };
 
     m_hDC = GetDC(m_hWnd);
-    m_pBackBuffer = new  CTexture();
-    /*m_pBackBuffer->CreateBackBuffer(hInst, m_hDC);*/
     RECT crt = { 0, 0, m_ClientWidth, m_ClientHeight };
+    m_pBackBuffer = new  CTexture();
     m_pBackBuffer->CreateBackBuffer(crt, hInst, m_hDC);
     OnCreate();
 
