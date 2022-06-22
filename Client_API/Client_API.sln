@@ -33,7 +33,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client_12_GameObject2", "Cl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client_13_GameObject3", "Client_13_GameObject3\Client_13_GameObject3.vcxproj", "{137BAAE5-923B-488B-89A6-EFA3FBA88D6B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client_14_InputKey", "Client_14_InputKey\Client_14_InputKey.vcxproj", "{EF974EB0-1058-4AC7-BD72-CCF35F1EDA8B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client_14_Singleton_macro", "Client_14_InputKey\Client_14_InputKey.vcxproj", "{EF974EB0-1058-4AC7-BD72-CCF35F1EDA8B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client_15_InputMgr", "Client_15_InputMgr\Client_15_InputMgr.vcxproj", "{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,6 +165,14 @@ Global
 		{EF974EB0-1058-4AC7-BD72-CCF35F1EDA8B}.Release|x64.Build.0 = Release|x64
 		{EF974EB0-1058-4AC7-BD72-CCF35F1EDA8B}.Release|x86.ActiveCfg = Release|Win32
 		{EF974EB0-1058-4AC7-BD72-CCF35F1EDA8B}.Release|x86.Build.0 = Release|Win32
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Debug|x64.ActiveCfg = Debug|x64
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Debug|x64.Build.0 = Debug|x64
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Debug|x86.ActiveCfg = Debug|Win32
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Debug|x86.Build.0 = Debug|Win32
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Release|x64.ActiveCfg = Release|x64
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Release|x64.Build.0 = Release|x64
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Release|x86.ActiveCfg = Release|Win32
+		{83007B89-8459-4ECE-92FA-0DFE31A6DF1E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

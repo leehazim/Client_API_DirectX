@@ -24,6 +24,7 @@
     <ProjectGuid>{ef974eb0-1058-4ac7-bd72-ccf35f1eda8b}</ProjectGuid>
     <RootNamespace>Client14InputKey</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Client_14_Singleton_macro</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
