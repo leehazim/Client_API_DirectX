@@ -1,0 +1,23 @@
+﻿  CAPIEngine.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(28,24): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(28,24): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(28,39): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(28,39): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(105,22): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(105,22): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(105,37): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(105,37): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(174,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(174,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(173,52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(173,40): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(180,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(180,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(197,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(197,46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(207,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\Client_15_InputMgr\CAPIEngine.cpp(207,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CInputMgr.cpp
+  main.cpp
+  코드를 생성하고 있습니다...
+  Client_15_InputMgr.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_API\x64\Debug\Client_15_InputMgr.exe

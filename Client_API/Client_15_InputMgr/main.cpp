@@ -72,7 +72,7 @@ public:
 		}
 		if (CInputMgr::GetInstance()->KeyPress("OnFire")) {
 			OutputDebugString(L"Skill\n");
-			MessageBox(m_hWnd, L"Skill\0", L"Skill00", MB_OK);
+			MessageBox(m_hWnd, L"Skill00\n", L"Skill00", MB_OK);
 		}
 		CInputMgr::GetInstance()->Update();
 

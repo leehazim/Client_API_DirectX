@@ -1,0 +1,4 @@
+﻿  CUnit.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\SVector2D.h(44): warning C4172: 지역 변수 또는 임시: result의 주소를 반환하고 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\SVector2D.h(28): warning C4172: 지역 변수 또는 임시: result의 주소를 반환하고 있습니다.
+  Client_Step15_TimeLoop.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Step14\x64\Debug\Client_Step15_TimeLoop.exe
