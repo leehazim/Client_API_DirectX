@@ -20,7 +20,7 @@ struct SVector2D {
 		return *this;
 	}
 
-	SVector2D& operator +(const SVector2D& a) {
+	SVector2D operator +(const SVector2D& a) {
 		SVector2D result = {0.0f, 0.0f};
 		result.m_X = m_X + a.m_X;
 		result.m_Y = m_Y + a.m_Y;
@@ -28,7 +28,7 @@ struct SVector2D {
 		return result;
 	}
 
-	SVector2D& operator -(const SVector2D& a) {
+	SVector2D operator -(const SVector2D& a) {
 		SVector2D result = {0.0f, 0.0f};
 		result.m_X = m_X - a.m_X;
 		result.m_Y = m_X - a.m_Y;
@@ -36,7 +36,7 @@ struct SVector2D {
 		return result;
 	}
 
-	SVector2D& operator *(const float scalar) {
+	SVector2D operator *(const float scalar) {
 		SVector2D result = { 0.0f, 0.0f };
 		result.m_X = m_X * scalar;
 		result.m_Y = m_Y * scalar;

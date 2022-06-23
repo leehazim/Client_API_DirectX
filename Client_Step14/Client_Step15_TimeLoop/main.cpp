@@ -66,11 +66,11 @@ public:
 
 		// input
 		if (CInputMgr::GetInstance()->KeyPress("OnMoveLeft")) {
-			m_Unit->SetVelocity(SVector2D(-1000.0f, 0.0f));
+			m_Unit->SetVelocity(SVector2D(-250.0f, 0.0f));
 			m_Unit->Update();
 		}
 		if (CInputMgr::GetInstance()->KeyPress("OnMoveRight")) {
-			m_Unit->SetVelocity(SVector2D(1000.0f, 0.0f));
+			m_Unit->SetVelocity(SVector2D(250.0f, 0.0f));
 			m_Unit->Update();
 		}
 		if (CInputMgr::GetInstance()->KeyDown("OnFire")) {

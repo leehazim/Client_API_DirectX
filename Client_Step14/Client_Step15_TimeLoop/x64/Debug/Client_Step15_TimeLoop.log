@@ -1,4 +1,13 @@
-﻿  CUnit.cpp
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\SVector2D.h(44): warning C4172: 지역 변수 또는 임시: result의 주소를 반환하고 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\SVector2D.h(28): warning C4172: 지역 변수 또는 임시: result의 주소를 반환하고 있습니다.
-  Client_Step15_TimeLoop.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Step14\x64\Debug\Client_Step15_TimeLoop.exe
+﻿  CObject.cpp
+  CUnit.cpp
+  SVector2D.cpp
+  main.cpp
+D:\Github\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\CInputMgr.h(52,1): warning C4311: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\Github\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\main.cpp(26): message : 컴파일되는 함수 템플릿 인스턴스화 'bool CInputMgr::AddKey<char[7],int>(const __type (&),const int &)'에 대한 참조를 확인하세요.
+          with
+          [
+              __type=char [7]
+          ]
+D:\Github\Client_API_DirectX\Client_Step14\Client_Step15_TimeLoop\CInputMgr.h(52,1): warning C4302: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 잘립니다.
+  코드를 생성하고 있습니다...
+  Client_Step15_TimeLoop.vcxproj -> D:\Github\Client_API_DirectX\Client_Step14\x64\Debug\Client_Step15_TimeLoop.exe

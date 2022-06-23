@@ -40,10 +40,7 @@ void CUnit::SetAnchors(float anchorX, float anchorY) {
 
 void CUnit::Update() {
 	//m_Position = m_Position + m_Velocity; 
-	
-	SVector2D tVector;
-	tVector.m_X = 100.0f;
-	tVector.m_Y = 0.0f;
-	m_Position = m_Position + tVector* 0.01f;//m_Velocity* m_pEngine->m_DeltaTime;//m_pEngine->GetDeltaTime());
+
+	m_Position = m_Position + m_Velocity* m_pEngine->m_DeltaTime;
 
 }
