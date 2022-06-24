@@ -39,8 +39,5 @@ void CUnit::SetAnchors(float anchorX, float anchorY) {
 }
 
 void CUnit::Update() {
-	//m_Position = m_Position + m_Velocity; 
-
-	m_Position = m_Position + m_Velocity* m_pEngine->m_DeltaTime;
-
+	m_Position += m_Velocity* m_pEngine->m_DeltaTime;
 }
