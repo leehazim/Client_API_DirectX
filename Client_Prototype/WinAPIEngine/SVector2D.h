@@ -12,28 +12,52 @@ struct SVector2D {
 		m_Y = other.m_Y;
 	}
 
-	// º¤ÅÍÀÇ ¿¬»ê
+	/*void operator=(const SVector2D& other) {
+		this->m_X = other.m_X;
+		this->m_Y = other.m_Y;
+	}
+
+	SVector2D operator +(const SVector2D& other) {
+		m_X = m_X + other.m_X;
+		m_Y = m_Y + other.m_Y;
+		return SVector2D(m_X, m_Y);
+	}
+
+	SVector2D operator -(const SVector2D& other) {
+		m_X = m_X - other.m_X;
+		m_Y = m_Y - other.m_Y;
+		return SVector2D(m_X, m_Y);
+	}
+
+	SVector2D operator *(const float scalar) {
+		m_X = m_X * scalar;
+		m_Y = m_Y * scalar;
+		return SVector2D(m_X, m_Y);
+	}*/
+
 	void operator =(const SVector2D& other) {
 		m_X = other.m_X;
 		m_Y = other.m_Y;
 	}
 
 	SVector2D operator +(const SVector2D& a) {
-		//SVector2D result;
-		m_X = m_X + a.m_X;
-		m_Y = m_Y + a.m_Y;
-		return *this;
+		SVector2D result;
+		result.m_X = m_X + a.m_X;
+		result.m_Y = m_Y + a.m_Y;
+		return result;
 	}
 
 	SVector2D operator -(const SVector2D& a) {
-		m_X = m_X - a.m_X;
-		m_Y = m_Y - a.m_Y;
-		return *this;
+		SVector2D result;
+		result.m_X = m_X - a.m_X;
+		result.m_Y = m_Y - a.m_Y;
+		return result;
 	}
 
 	SVector2D operator *(const float& a) {
-		m_X = m_X * a;
-		m_Y = m_Y * a;
-		return *this;
+		SVector2D result;
+		result.m_X = m_X * a;
+		result.m_Y = m_Y * a;
+		return result;
 	}
 };

@@ -36,6 +36,7 @@ CUnit::CUnit(const CUnit& other) {
 
 	m_IsActive = other.m_IsActive;
 }
+
 CUnit& CUnit::operator=(const CUnit& other) {
 	m_Position = other.m_Position;
 
@@ -66,7 +67,14 @@ void CUnit::Destroy() {
 }
 
 void CUnit::Update(float deltaTime) {
- 	m_Position = m_Position + m_Velocity * deltaTime;
+	if (m_IsActive) {
+		/*SVector2D position = m_Position;
+		SVector2D Velocity = m_Velocity;
+		Velocity = Velocity * deltaTime;
+		position = position + Velocity;
+		m_Position = position;*/
+		m_Position = m_Position + m_Velocity * deltaTime;
+	}
 }
 
 void CUnit::Render() {
