@@ -83,6 +83,14 @@ void CAPIEngine::OnUpdate(float deltaTime) {
    
 }
 
+float CAPIEngine::GetClientWidth() const {
+    return m_ClientWidth;
+}
+
+float CAPIEngine::GetClientHeight() const {
+    return m_ClientHeight;
+}
+
 ATOM CAPIEngine::MyRegisterClass(HINSTANCE hInstance) {
     WNDCLASSEXW wcex;
 
@@ -133,6 +141,9 @@ LRESULT CAPIEngine::WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
         EndPaint(hWnd, &ps);
     }
     break;
+    case WM_TIMER:
+        OutputDebugString(L"WM_TIMER Enmey Fire~\n");
+        break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

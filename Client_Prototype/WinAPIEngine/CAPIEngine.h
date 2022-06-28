@@ -35,6 +35,10 @@ public:
 	__type* InstantObject(CUnit* pPrefab);
 	template<typename __type>
 	void DestroyObject(__type*& unit);
+
+	float GetClientWidth() const;
+	float GetClientHeight() const;
+
 protected:
 	// Create내부 함수랩핑
 	ATOM MyRegisterClass(HINSTANCE hInstance);

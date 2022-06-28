@@ -83,6 +83,14 @@ void CAPIEngine::OnUpdate(float deltaTime) {
    
 }
 
+float CAPIEngine::GetClientWidth() const {
+    return m_ClientWidth;
+}
+
+float CAPIEngine::GetClientHeight() const {
+    return m_ClientHeight;
+}
+
 ATOM CAPIEngine::MyRegisterClass(HINSTANCE hInstance) {
     WNDCLASSEXW wcex;
 
@@ -180,4 +188,13 @@ void CAPIEngine::Present() {
            m_ClientWidth, m_ClientHeight,
            m_pBackBuffer->m_hMemDC,
            0, 0, SRCCOPY);
+}
+
+void CAPIEngine::DeletePrefab(CUnit*& prefab) {
+    if (prefab != nullptr) {
+        prefab->Destroy();
+
+        delete prefab;
+        prefab = nullptr;
+    }
 }

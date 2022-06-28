@@ -28,34 +28,16 @@ public:
 	float GetDeltaTime() const { return m_DeltaTime; }
 
 	template<typename __type>
-	__type* CreatePrefab(CTexture* pText, float anchorX, float anchorY, SVector2D position) {
-		__type* pPrefab = new __type();
-		pPrefab->Create(this);
-		pPrefab->SetTexture(pText);
-		pPrefab->SetAnchors(anchorX, anchorY);
-		pPrefab->SetPosition(position);
-		
-		return pPrefab;
-	}
-	
-	void DeletePrefab(CUnit*& prefab) {
-		if (prefab != nullptr) {
-			prefab->Destroy();
-
-			delete prefab;
-			prefab = nullptr;
-		}
-	}
+	__type* CreatePrefab(CTexture* pText, float anchorX, float anchorY, SVector2D position);
+	void DeletePrefab(CUnit*& prefab);
 
 	template<typename __type>
-	__type* InstantObject(CUnit* pPrefab) {
-		__type* pUnit = static_cast<__type*>(pPrefab->Clone());
-		return pUnit;
-	}
+	__type* InstantObject(CUnit* pPrefab);
 	template<typename __type>
-	void DestroyObject(__type*& unit) {
-		SAFE_DELETE(unit);
-	}
+	void DestroyObject(__type*& unit);
+
+	float GetClientWidth() const;
+	float GetClientHeight() const;
 
 protected:
 	// Create내부 함수랩핑
@@ -89,3 +71,27 @@ public:
 	LARGE_INTEGER m_Second;
 	LARGE_INTEGER m_Time;
 };
+
+template<typename __type>
+inline __type* CAPIEngine::CreatePrefab(CTexture* pText, float anchorX, float anchorY, SVector2D position) {
+	__type* pPrefab = new __type();
+	pPrefab->Create(this);
+	pPrefab->SetTexture(pText);
+	pPrefab->SetAnchors(anchorX, anchorY);
+	pPrefab->SetPosition(position);
+
+	pPrefab->SetIsActive(true);
+
+	return pPrefab;
+}
+
+template<typename __type>
+inline __type* CAPIEngine::InstantObject(CUnit* pPrefab) {
+	__type* pUnit = static_cast<__type*>(pPrefab->Clone());
+	return pUnit;
+}
+
+template<typename __type>
+inline void CAPIEngine::DestroyObject(__type*& unit) {
+	SAFE_DELETE(unit);
+}

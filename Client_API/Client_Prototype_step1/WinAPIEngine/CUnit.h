@@ -8,11 +8,9 @@ class CUnit
 	: public CObject {
 public:
 	CUnit();
-	virtual ~CUnit();
-
 	CUnit(const CUnit& other);
-
 	CUnit& operator=(const CUnit& other);
+	virtual ~CUnit();
 
 public:
 
@@ -33,6 +31,9 @@ public:
 	void SetPosition(SVector2D Position);
 	SVector2D GetPosition()const;
 
+	void SetIsActive(bool isActive);
+	bool GetIsActive() const;
+
 public:
 	virtual CObject* Clone() = 0;
 
@@ -51,6 +52,8 @@ protected:
 	// 텍스쳐에서 비트맵의 가로 세로를 구해서 Display변수에 피벗된 좌표를 설정
 	float m_Width = 0.0f;
 	float m_Height = 0.0f;
+
+	bool m_IsActive = false;
 	
 	SVector2D m_Velocity;
 

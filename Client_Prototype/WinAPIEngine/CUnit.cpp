@@ -68,20 +68,12 @@ void CUnit::Destroy() {
 
 void CUnit::Update(float deltaTime) {
 	if (m_IsActive) {
-		/*SVector2D position = m_Position;
-		SVector2D Velocity = m_Velocity;
-		Velocity = Velocity * deltaTime;
-		position = position + Velocity;
-		m_Position = position;*/
 		m_Position = m_Position + m_Velocity * deltaTime;
 	}
 }
 
 void CUnit::Render() {
 	if (this->GetIsActive()) {
-		m_Width = static_cast<float>(m_pCTexture->m_Info.bmWidth);
-		m_Height = static_cast<float>(m_pCTexture->m_Info.bmHeight);
-
 		m_DisplayX = m_Position.m_X - m_Width * m_AnchorX;
 		m_DisplayY = m_Position.m_Y - m_Height * m_AnchorY;
 
@@ -91,6 +83,9 @@ void CUnit::Render() {
 
 void CUnit::SetTexture(CTexture* pCTexture) {
 	m_pCTexture = pCTexture;
+
+	m_Width = static_cast<float>(m_pCTexture->m_Info.bmWidth);
+	m_Height = static_cast<float>(m_pCTexture->m_Info.bmHeight);
 }
 
 void CUnit::SetEngine(CAPIEngine* pEngine) {
