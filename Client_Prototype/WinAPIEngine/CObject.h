@@ -12,6 +12,9 @@ public:
 public:
 	virtual CObject* Clone() = 0;
 
+	void SetPosition(SVector2D position);
+	SVector2D GetPosition() const;
+
 protected:
 	SVector2D m_Position;
 };

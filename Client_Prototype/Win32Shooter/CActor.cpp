@@ -17,16 +17,21 @@ CActor::CActor(const CActor& tActor)
 CActor::~CActor() {}
 
 void CActor::DoFire(std::vector<CBullet*>& bullets) {
+	float zero = 0.0f;
+	float direction = -1.0f;
+	float velocity = 200.0f;
+	int maxIndex = bullets.size() - 1;
+	int firstIndex = 0;
 
 	bullets[m_CurIndexBullet]->SetPosition(SVector2D(m_Position.m_X, m_Position.m_Y));
-	bullets[m_CurIndexBullet]->SetVelocity(SVector2D(0.0f, -1.0f) * 200.0f);
+	bullets[m_CurIndexBullet]->SetVelocity(SVector2D(zero, direction) * velocity);
 	bullets[m_CurIndexBullet]->SetIsActive(true);
 
-	if (m_CurIndexBullet < bullets.size() - 1) {
+	if (m_CurIndexBullet < maxIndex) {
 		m_CurIndexBullet++;
 	}
 	else {
-		m_CurIndexBullet = 0;
+		m_CurIndexBullet = firstIndex;
 	}
 }
 

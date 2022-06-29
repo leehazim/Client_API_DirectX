@@ -66,6 +66,17 @@ public:
 			pBullet = nullptr;
 		}
 
+		// 적 생성
+		m_pEnemy = InstantObject<CEnemy>(m_PFEnemy);
+		m_pEnemy->AddRef();
+		m_pEnemy->SetVelocity(SVector2D(+1.0f, 0.0f) * 100.0f);
+
+		// 적(조준탄발사) 생성
+		m_pEnemyAimed = InstantObject<CEnemy>(m_PFEnemy);
+		m_pEnemyAimed->AddRef();
+		m_pEnemyAimed->SetVelocity(SVector2D(+1.0f, 0.0f) * 50.0f);
+		m_pEnemyAimed->SetPosition(SVector2D(400.0f, 150.0f));
+		// 적 탄환 생성
 		m_PFEnemyBullet = CreatePrefab<CBullet>(m_pTextBullet, 0.5f, 0.5f, SVector2D(400.0f, 100.0f));
 		CBullet* pBulletEnemy = nullptr;
 		for (int i = 0; i < 10; i++) {
@@ -84,27 +95,44 @@ public:
 			pBulletEnemy = nullptr;
 		}
 
-		// 적 생성
-		m_pEnemy = InstantObject<CEnemy>(m_PFEnemy);
-		m_pEnemy->AddRef();
-		m_pEnemy->SetVelocity(SVector2D(+1.0f, 0.0f) * 100.0f);
+		for (int i = 0; i < 10; i++) {
+			pBulletEnemy = InstantObject<CBullet>(m_PFEnemyBullet);
+			pBulletEnemy->AddRef();
 
-		//SetTimer(m_hWnd, 0, 3000, nullptr);
+			pBulletEnemy->SetIsActive(false);
+
+			m_AimedBullet.push_back(pBulletEnemy);
+			pBulletEnemy->AddRef();
+
+			m_Objects.push_back(pBulletEnemy);
+			pBulletEnemy->AddRef();
+
+			pBulletEnemy->Release();
+			pBulletEnemy = nullptr;
+		}
+		
 	}
 
 	virtual void OnDestroy() override {
 
-		//KillTimer(m_hWnd, 0);
-		// 적 파괴
-		DestroyObject(m_pEnemy);
-		DeletePrefab(m_PFEnemy);
-
-		// 플레이어 탄환 파괴
+		// 적탄환 파괴
 		vector<CBullet*>::iterator it;
+		for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++) {
+			DestroyObject(*it);
+		}
+		m_EnemyBullet.clear();
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++) {
 			DestroyObject(*it);
 		}
 		m_EnemyBullet.clear();
+		
+		
+		// 적(조준탄발사) 파괴
+		DestroyObject(m_pEnemyAimed);
+		// 적 파괴
+		DestroyObject(m_pEnemy);
+		DeletePrefab(m_PFEnemy);
+
 		// 탄환 파괴
 		for (it = m_Bullets.begin(); it != m_Bullets.end(); it++) {
 			DestroyObject(*it);
@@ -150,15 +178,27 @@ public:
 			m_pActor->DoFire(m_Bullets);
 		}
 
-		// 2초 간격으로 
-		if (m_pEnemy->m_TimeTick >= 5.0f) {
+		// 주기적으로 탄환 발사
+		float timer = 2.0f;
+		if (m_pEnemy->m_TimeTick >= timer) {
 			m_pEnemy->DoFire(m_EnemyBullet);
 			
-			float diff = m_pEnemy->m_TimeTick - 5.0f;
+			float diff = m_pEnemy->m_TimeTick - timer;
 			m_pEnemy->m_TimeTick = diff;
 		}
 		else {
 			m_pEnemy->m_TimeTick = m_pEnemy->m_TimeTick + deltaTime;
+		}
+
+		float timer2 = 2.5f;
+		if (m_pEnemyAimed->m_TimeTick >= timer2) {
+			m_pEnemyAimed->DoFireAimed(m_AimedBullet, m_pActor);
+
+			float diff = m_pEnemyAimed->m_TimeTick - timer2;
+			m_pEnemyAimed->m_TimeTick = diff;
+		}
+		else {
+			m_pEnemyAimed->m_TimeTick = m_pEnemyAimed->m_TimeTick + deltaTime;
 		}
 
 		// 탄환 
@@ -168,18 +208,23 @@ public:
 		
 		// 적, 적탄환 업데이트
 		m_pEnemy->Update(deltaTime);
+		m_pEnemyAimed->Update(deltaTime);
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++) 
 			(*it)->Update(deltaTime);
-		
+		for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++)
+			(*it)->Update(deltaTime);
 		// 렌더링 파트
-		this->Clear(0.1f, 0.1f, 0.3f);
+		this->Clear(1.0f, 1.0f, 1.0f);
 	
 		m_pActor->Render();
 		for (it = m_Bullets.begin(); it != m_Bullets.end(); it++)
 			(*it)->Render(); 
 
 		m_pEnemy->Render();
+		m_pEnemyAimed->Render();
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++)
+			(*it)->Render();
+		for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++)
 			(*it)->Render();
 
 		this->Present();
@@ -199,6 +244,9 @@ public:
 	CEnemy* m_pEnemy = nullptr;
 	vector<CBullet*> m_EnemyBullet;
 	CUnit* m_PFEnemyBullet = nullptr;
+
+	CEnemy* m_pEnemyAimed = nullptr;
+	vector<CBullet*> m_AimedBullet;
 
 	list<CObject*> m_Objects;
 

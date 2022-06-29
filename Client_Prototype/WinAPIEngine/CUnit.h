@@ -28,9 +28,6 @@ public:
 	void SetVelocity(SVector2D speed);
 	SVector2D GetVelocity() const;
 
-	void SetPosition(SVector2D Position);
-	SVector2D GetPosition()const;
-
 	void SetIsActive(bool isActive);
 	bool GetIsActive() const;
 

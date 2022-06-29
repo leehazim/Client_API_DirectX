@@ -105,14 +105,6 @@ SVector2D CUnit::GetVelocity() const {
 	return m_Velocity;
 }
 
-void CUnit::SetPosition(SVector2D Position) {
-	m_Position = Position;
-}
-
-SVector2D CUnit::GetPosition() const {
-	return m_Position;
-}
-
 void CUnit::SetIsActive(bool isActive) {
 	m_IsActive = isActive;
 }
