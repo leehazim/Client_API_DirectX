@@ -21,5 +21,6 @@ C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\
   CObject.cpp
   CTexture.cpp
   CUnit.cpp
+  SVector2D.cpp
   코드를 생성하고 있습니다...
   WinAPIEngine.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\bin\WinAPIEngine.lib

@@ -1,4 +1,13 @@
 ﻿  CEnemy.cpp
 C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\Win32Shooter\CEnemy.cpp(42,35): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\Win32Shooter\CEnemy.cpp(74,35): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\Win32Shooter\CEnemy.cpp(76,35): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CInputMgr.h(52,1): warning C4311: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 포인터가 잘립니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\Win32Shooter\main.cpp(28): message : 컴파일되는 함수 템플릿 인스턴스화 'bool CInputMgr::AddKey<char[7],int>(const __type (&),const int &)'에 대한 참조를 확인하세요.
+          with
+          [
+              __type=char [7]
+          ]
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CInputMgr.h(52,1): warning C4302: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 잘립니다.
+  코드를 생성하고 있습니다...
   Win32Shooter.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\bin\Win32Shooter.exe

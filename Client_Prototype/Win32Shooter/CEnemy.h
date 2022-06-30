@@ -19,6 +19,8 @@ public:
 
 	void DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject);
 
+	void DoFireCircle(std::vector<CBullet*>& bullets);
+
 public:
 	float m_TimeTick = 0.0f;
 

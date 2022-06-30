@@ -59,16 +59,18 @@ void CEnemy::DoFire(std::vector<CBullet*>& bullets) {
 void CEnemy::DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject) {
 	float zero = 0.0f;
 	float velocity = 200.0f;
+
 	SVector2D startPoint = m_Position;
 	SVector2D targetPoint = pObject->GetPosition();
-	SVector2D direction = (targetPoint - startPoint).nomalization();
+	SVector2D direction = targetPoint - startPoint;
+	SVector2D directionNorm = direction.nomalization();
 
 	bullets[m_CurrentIndex]->SetPosition(startPoint);
-	bullets[m_CurrentIndex]->SetVelocity(direction * velocity);
+	bullets[m_CurrentIndex]->SetVelocity(directionNorm * velocity);
 	bullets[m_CurrentIndex]->SetIsActive(true);
 
 	wchar_t szTemp[64] = { 0 };
-	wsprintf(szTemp, L"AImedFire");
+	wsprintf(szTemp, L"AimedFire");
 	OutputDebugString(szTemp);
 
 	int maxIndex = bullets.size() - 1;
@@ -78,5 +80,32 @@ void CEnemy::DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject) {
 	else {
 		int firstIndex = 0;
 		m_CurrentIndex = firstIndex;
+	}
+}
+
+void CEnemy::DoFireCircle(std::vector<CBullet*>& bullets) {
+	
+	SVector2D velocities[8] = {
+		SVector2D::LEFT,
+		SVector2D::DOWN,
+		SVector2D::RIGHT,
+		SVector2D::UP,
+		SVector2D::UP + SVector2D::RIGHT,
+		SVector2D::UP + SVector2D::LEFT,
+		SVector2D::DOWN + SVector2D::RIGHT,
+		SVector2D::DOWN + SVector2D::LEFT,
+	};
+
+	for (int i = 0; i < 8; i++) {
+		bullets[m_CurrentIndex + i]->SetPosition(SVector2D(m_Position.m_X, m_Position.m_Y));
+		bullets[m_CurrentIndex + i]->SetVelocity(velocities[i].Norm() * 200.0f);
+		bullets[m_CurrentIndex + i]->SetIsActive(true);
+	}
+	
+	if (m_CurrentIndex == 8) {
+		m_CurrentIndex = 0;
+	}
+	else {
+		m_CurrentIndex = 8;
 	}
 }
