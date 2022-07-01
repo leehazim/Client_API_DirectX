@@ -78,6 +78,7 @@ void CUnit::Render() {
 		m_DisplayY = m_Position.m_Y - m_Height * m_AnchorY;
 
 		m_pEngine->DrawTexture(m_DisplayX, m_DisplayY, m_pCTexture);
+		/*m_pEngine->DrawCircle(m_Position.m_X, m_Position.m_Y, m_Radius);*/
 	}
 }
 
@@ -97,6 +98,14 @@ void CUnit::SetAnchors(float anchorX, float anchorY) {
 	m_AnchorY = anchorY;
 }
 
+SVector2D CUnit::GetAnchors() const {
+	return SVector2D(m_AnchorX, m_AnchorY);
+}
+
+SVector2D CUnit::GetRect() const {
+	return SVector2D(m_Width, m_Height);
+}
+
 void CUnit::SetVelocity(SVector2D speed) {
 	m_Velocity = speed;
 }
@@ -112,3 +121,44 @@ void CUnit::SetIsActive(bool isActive) {
 bool CUnit::GetIsActive() const {
 	return m_IsActive;
 }
+
+float CUnit::GetRadius() const {
+	return m_Radius;
+}
+
+void CUnit::SetRadius(float radius) {
+	m_Radius = radius;
+}
+
+bool CUnit::IsTrigger(const CUnit& other) const {
+	// AABB를 위한 변수
+	/*float leftX = 0.f;
+	float rightX = 0.f;
+	float topY = 0.f;
+	float bottomY = 0.f;
+
+	float leftX_other = 0.f;
+	float rightX_other = 0.f;
+	float topY_other = 0.f;
+	float bottomY_other = 0.f;*/
+	
+	float leftX = m_Position.m_X - m_Width * m_AnchorX;
+	float rightX = m_Position.m_X - m_Width * m_AnchorX +m_Width;
+	float topY = m_Position.m_Y - m_Height * m_AnchorY;
+	float bottomY = m_Position.m_Y - m_Height * m_AnchorY + m_Height;
+	
+	SVector2D otherPos = other.GetPosition();
+	SVector2D otherAnchor = other.GetAnchors();
+	SVector2D otherRect = other.GetRect();
+	float leftX_other = otherPos.m_X - otherRect.m_X * otherAnchor.m_X;
+	float rightX_other = otherPos.m_X - otherRect.m_X * otherAnchor.m_X + otherRect.m_X;
+	float topY_other = otherPos.m_Y - otherRect.m_Y * otherAnchor.m_Y;
+	float bottomY_other = otherPos.m_Y - otherRect.m_Y * otherAnchor.m_Y + otherRect.m_Y;
+
+	if (rightX < leftX_other) 		return false;
+	if (leftX > rightX_other) 		return false;
+	if (bottomY < topY_other)		return false;
+	if (topY > bottomY_other)		return false;
+	return true;
+}
+

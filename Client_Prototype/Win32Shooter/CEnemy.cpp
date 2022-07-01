@@ -35,6 +35,8 @@ void CEnemy::Update(float deltaTime) {
 }
 
 void CEnemy::DoFire(std::vector<CBullet*>& bullets) {
+
+	if (!m_IsActive) return;
 	float zero = 0.0f;
 	float direction = 1.0f;
 	float velocity = 200.0f;
@@ -57,6 +59,7 @@ void CEnemy::DoFire(std::vector<CBullet*>& bullets) {
 }
 
 void CEnemy::DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject) {
+	if (!m_IsActive) return;
 	float zero = 0.0f;
 	float velocity = 200.0f;
 
@@ -84,21 +87,20 @@ void CEnemy::DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject) {
 }
 
 void CEnemy::DoFireCircle(std::vector<CBullet*>& bullets) {
-	
-	SVector2D velocities[8] = {
-		SVector2D::LEFT,
-		SVector2D::DOWN,
-		SVector2D::RIGHT,
-		SVector2D::UP,
-		SVector2D::UP + SVector2D::RIGHT,
-		SVector2D::UP + SVector2D::LEFT,
-		SVector2D::DOWN + SVector2D::RIGHT,
-		SVector2D::DOWN + SVector2D::LEFT,
-	};
+	if (!m_IsActive) return;
+	const float PI = 3.14159f;
+	float Deg2Rad = PI / 180;
+	float e = 1.f;
+	float degree = 45.f;
+	float velocity = 200.f;
 
 	for (int i = 0; i < 8; i++) {
 		bullets[m_CurrentIndex + i]->SetPosition(SVector2D(m_Position.m_X, m_Position.m_Y));
-		bullets[m_CurrentIndex + i]->SetVelocity(velocities[i].Norm() * 200.0f);
+		float angleDegree = degree * i;
+		float dirX = e * cosf(angleDegree * Deg2Rad);
+		float dirY = e * sinf(angleDegree * Deg2Rad);
+		bullets[m_CurrentIndex + i]->SetVelocity(SVector2D(dirX, dirY) * velocity);
+
 		bullets[m_CurrentIndex + i]->SetIsActive(true);
 	}
 	

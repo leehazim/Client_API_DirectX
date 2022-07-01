@@ -1,5 +1,6 @@
 #pragma once
 #include "CObject.h"
+#include<vector>
 
 class CTexture;
 class CAPIEngine;
@@ -23,13 +24,19 @@ public:
 	void SetTexture(CTexture* pCtexture);
 	void SetEngine(CAPIEngine* pEngine);
 	void SetAnchors(float anchorX = 0.5f, float anchorY = 0.5f);
-
+	SVector2D GetAnchors()const;
+	SVector2D GetRect() const;
 
 	void SetVelocity(SVector2D speed);
 	SVector2D GetVelocity() const;
 
 	void SetIsActive(bool isActive);
 	bool GetIsActive() const;
+
+	void SetRadius(float radius);
+	float GetRadius() const;
+
+	bool IsTrigger(const CUnit& other) const;
 
 public:
 	virtual CObject* Clone() = 0;

@@ -16,9 +16,7 @@ public:
 	virtual void Update(float deltaTime) override;
 	
 	void DoFire(std::vector<CBullet*>&bullets);
-
 	void DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject);
-
 	void DoFireCircle(std::vector<CBullet*>& bullets);
 
 public:

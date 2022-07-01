@@ -72,22 +72,21 @@ public:
 		m_pEnemy->SetVelocity(SVector2D(+1.0f, 0.0f) * 100.0f);
 
 		// 적(조준탄발사) 생성
-		m_pEnemyAimed = InstantObject<CEnemy>(m_PFEnemy);
-		m_pEnemyAimed->AddRef();
-		m_pEnemyAimed->SetVelocity(SVector2D(+1.0f, 0.0f) * 50.0f);
-		m_pEnemyAimed->SetPosition(SVector2D(400.0f, 150.0f));
+		//m_pEnemyAimed = InstantObject<CEnemy>(m_PFEnemy);
+		//m_pEnemyAimed->AddRef();
+		//m_pEnemyAimed->SetVelocity(SVector2D(+1.0f, 0.0f) * 50.0f);
+		//m_pEnemyAimed->SetPosition(SVector2D(400.0f, 150.0f));
 
-		// 적(원형 탄) 생성
-		m_pEnemyCircle = InstantObject<CEnemy>(m_PFEnemy);
-		m_pEnemyCircle->AddRef();
-		m_pEnemyCircle->SetVelocity(SVector2D(1.0f, 0.0f) * 25.0f);
-		m_pEnemyCircle->SetPosition(SVector2D(400.0f, 200.0f));
+		//// 적(원형 탄) 생성
+		//m_pEnemyCircle = InstantObject<CEnemy>(m_PFEnemy);
+		//m_pEnemyCircle->AddRef();
+		//m_pEnemyCircle->SetVelocity(SVector2D(1.0f, 0.0f) * 25.0f);
+		//m_pEnemyCircle->SetPosition(SVector2D(400.0f, 200.0f));
 
 		// 적 탄환 생성
 		m_PFEnemyBullet = CreatePrefab<CBullet>(m_pTextBullet, 0.5f, 0.5f, SVector2D(400.0f, 100.0f));
 		CBullet* pBulletEnemy = nullptr;
-
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 16; i++) {
 			pBulletEnemy = InstantObject<CBullet>(m_PFEnemyBullet);
 			pBulletEnemy->AddRef();
 
@@ -103,60 +102,61 @@ public:
 			pBulletEnemy = nullptr;
 		}
 
-		for (int i = 0; i < 10; i++) {
-			pBulletEnemy = InstantObject<CBullet>(m_PFEnemyBullet);
-			pBulletEnemy->AddRef();
+		// 간략하게 하기 위해서 적 오브젝트를 하나만 사용해서 충돌 적용이 가능한지 확인하자
+		// 조준탄 생성
+		//for (int i = 0; i < 10; i++) {
+		//	pBulletEnemy = InstantObject<CBullet>(m_PFEnemyBullet);
+		//	pBulletEnemy->AddRef();
 
-			pBulletEnemy->SetIsActive(false);
+		//	pBulletEnemy->SetIsActive(false);
 
-			m_AimedBullet.push_back(pBulletEnemy);
-			pBulletEnemy->AddRef();
+		//	m_AimedBullet.push_back(pBulletEnemy);
+		//	pBulletEnemy->AddRef();
 
-			m_Objects.push_back(pBulletEnemy);
-			pBulletEnemy->AddRef();
+		//	m_Objects.push_back(pBulletEnemy);
+		//	pBulletEnemy->AddRef();
 
-			pBulletEnemy->Release();
-			pBulletEnemy = nullptr;
-		}
-		
-		// 원형탄 생성
-		for (int i = 0; i < 16; i++) {
-			pBulletEnemy = InstantObject<CBullet>(m_PFEnemyBullet);
-			pBulletEnemy->AddRef();
-			
-			pBulletEnemy->SetIsActive(false);
+		//	pBulletEnemy->Release();
+		//	pBulletEnemy = nullptr;
+		//}
+		//// 원형탄 생성
+		//for (int i = 0; i < 16; i++) {
+		//	pBulletEnemy = InstantObject<CBullet>(m_PFEnemyBullet);
+		//	pBulletEnemy->AddRef();
+		//	
+		//	pBulletEnemy->SetIsActive(false);
 
-			m_CircleBullet.push_back(pBulletEnemy);
-			pBulletEnemy->AddRef();
+		//	m_CircleBullet.push_back(pBulletEnemy);
+		//	pBulletEnemy->AddRef();
 
-			m_Objects.push_back(pBulletEnemy);
-			pBulletEnemy->AddRef();
-			
-			pBulletEnemy->Release();
-			pBulletEnemy = nullptr;
-		}
+		//	m_Objects.push_back(pBulletEnemy);
+		//	pBulletEnemy->AddRef();
+		//	
+		//	pBulletEnemy->Release();
+		//	pBulletEnemy = nullptr;
+		//}
 	}
 
 	virtual void OnDestroy() override {
 
 		// 적탄환 파괴
 		vector<CBullet*>::iterator it;
-		for (it = m_CircleBullet.begin(); it != m_CircleBullet.end(); it++) {
+		/*for (it = m_CircleBullet.begin(); it != m_CircleBullet.end(); it++) {
 			DestroyObject(*it);
 		}
 		m_CircleBullet.clear();
 		for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++) {
 			DestroyObject(*it);
 		}
-		m_EnemyBullet.clear();
+		m_AimedBullet.clear();*/
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++) {
 			DestroyObject(*it);
 		}
 		m_EnemyBullet.clear();
 
-		DestroyObject(m_pEnemyCircle);
-		// 적(조준탄발사) 파괴
-		DestroyObject(m_pEnemyAimed);
+		//DestroyObject(m_pEnemyCircle);
+		//// 적(조준탄발사) 파괴
+		//DestroyObject(m_pEnemyAimed);
 		// 적 파괴
 		DestroyObject(m_pEnemy);
 		DeletePrefab(m_PFEnemy);
@@ -191,6 +191,48 @@ public:
 	virtual void OnUpdate(float deltaTime) override {
 		CAPIEngine::OnUpdate(deltaTime);
 
+
+		// collision circle
+
+		// 적 vs 주인공 탄환 오브젝트의 충돌 확인
+		vector<CBullet*>::iterator its;
+		for (its = m_Bullets.begin(); its != m_Bullets.end(); its++) {
+			if ((*its)->GetIsActive()) {
+				// 원 대 원 충돌
+				//if (m_pEnemy->GetIsActive()) {
+				//	// 제곱근은 무한의 개념이 들어가기 때문에 연산이 느리다. 
+				//	// 그래서 그냥 제곱한 상태로 거리를 체크하는 방식을 많이 사용한다.
+				//	float addR =	((*its)->GetRadius() + m_pEnemy->GetRadius()) * 
+				//					((*its)->GetRadius() + m_pEnemy->GetRadius());
+				//	float distance =	((*its)->GetPosition().m_X - m_pEnemy->GetPosition().m_X) /* x거리 제곱*/
+				//					   *((*its)->GetPosition().m_X - m_pEnemy->GetPosition().m_X) +
+				//						((*its)->GetPosition().m_Y - m_pEnemy->GetPosition().m_Y) /* y거리 제곱*/
+				//					   *((*its)->GetPosition().m_Y - m_pEnemy->GetPosition().m_Y);
+				//	if (distance <= addR) {
+				//		OutputDebugString(L"OnTrigger\n");
+				//		(*its)->SetIsActive(false);
+				//		m_pEnemy->SetIsActive(false);
+				//		break;
+				//	}
+				//}
+				//else { break; }
+
+				// AABB 충돌 테스트
+				if (m_pEnemy->GetIsActive()) {
+					if (m_pEnemy->IsTrigger(*(*its))) {
+						OutputDebugString(L"CollisionRect!!!!!!!!!!!\n");
+						(*its)->SetIsActive(false);
+						m_pEnemy->SetIsActive(false);
+						break;
+					}
+				}
+				else { break; }
+			}
+			else { break; }
+		}
+		
+
+
 		CInputMgr::GetInstance()->Update();
 
 		// 업데이트 파트
@@ -208,7 +250,7 @@ public:
 
 		// 주기적으로 탄환 발사
 
-		float timer = 3.0f;
+		/*float timer = 3.0f;
 		if (m_pEnemyCircle->m_TimeTick >= timer) {
 			m_pEnemyCircle->DoFireCircle(m_CircleBullet);
 
@@ -219,16 +261,6 @@ public:
 			m_pEnemyCircle->m_TimeTick = m_pEnemyCircle->m_TimeTick + deltaTime;
 		}
 
-		timer = 2.0f;
-		if (m_pEnemy->m_TimeTick >= timer) {
-			m_pEnemy->DoFire(m_EnemyBullet);
-			
-			float diff = m_pEnemy->m_TimeTick - timer;
-			m_pEnemy->m_TimeTick = diff;
-		}
-		else {
-			m_pEnemy->m_TimeTick = m_pEnemy->m_TimeTick + deltaTime;
-		}
 
 		float timer2 = 2.5f;
 		if (m_pEnemyAimed->m_TimeTick >= timer2) {
@@ -239,6 +271,16 @@ public:
 		}
 		else {
 			m_pEnemyAimed->m_TimeTick = m_pEnemyAimed->m_TimeTick + deltaTime;
+		}*/
+		float timer = 2.0f;
+		if (m_pEnemy->m_TimeTick >= timer) {
+			m_pEnemy->DoFireCircle(m_EnemyBullet);
+			
+			float diff = m_pEnemy->m_TimeTick - timer;
+			m_pEnemy->m_TimeTick = diff;
+		}
+		else {
+			m_pEnemy->m_TimeTick = m_pEnemy->m_TimeTick + deltaTime;
 		}
 
 		// 탄환 
@@ -248,14 +290,14 @@ public:
 		
 		// 적, 적탄환 업데이트
 		m_pEnemy->Update(deltaTime);
-		m_pEnemyAimed->Update(deltaTime);
-		m_pEnemyCircle->Update(deltaTime);
+	/*	m_pEnemyAimed->Update(deltaTime);
+		m_pEnemyCircle->Update(deltaTime);*/
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++) 
 			(*it)->Update(deltaTime);
-		for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++)
+		/*for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++)
 			(*it)->Update(deltaTime);
 		for (it = m_CircleBullet.begin(); it != m_CircleBullet.end(); it++) 
-			(*it)->Update(deltaTime);
+			(*it)->Update(deltaTime);*/
 		
 		// 렌더링 파트
 		this->Clear(1.0f, 1.0f, 1.0f);
@@ -265,14 +307,14 @@ public:
 			(*it)->Render(); 
 
 		m_pEnemy->Render();
-		m_pEnemyAimed->Render();
-		m_pEnemyCircle->Render();
+		/*m_pEnemyAimed->Render();
+		m_pEnemyCircle->Render();*/
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++)
 			(*it)->Render();
-		for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++)
+		/*for (it = m_AimedBullet.begin(); it != m_AimedBullet.end(); it++)
 			(*it)->Render();
 		for (it = m_CircleBullet.begin(); it != m_CircleBullet.end(); it++)
-			(*it)->Render();
+			(*it)->Render();*/
 
 		this->Present();
 	}
@@ -292,11 +334,11 @@ public:
 	vector<CBullet*> m_EnemyBullet;
 	CUnit* m_PFEnemyBullet = nullptr;
 
-	CEnemy* m_pEnemyAimed = nullptr;
+	/*CEnemy* m_pEnemyAimed = nullptr;
 	vector<CBullet*> m_AimedBullet;
 
 	CEnemy* m_pEnemyCircle = nullptr;
-	vector<CBullet*> m_CircleBullet;
+	vector<CBullet*> m_CircleBullet;*/
 
 	list<CObject*> m_Objects;
 
