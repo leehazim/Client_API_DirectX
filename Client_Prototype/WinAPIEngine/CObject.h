@@ -15,6 +15,15 @@ public:
 	void SetPosition(SVector2D position);
 	SVector2D GetPosition() const;
 
+	SVector2D GetRect() const;
+	SVector2D GetAnchors() const;
+
 protected:
 	SVector2D m_Position;
+
+	float m_Width = 0.0f;
+	float m_Height = 0.0f;
+
+	float m_AnchorX = 0.5f;
+	float m_AnchorY = 0.5f;
 };

@@ -13,60 +13,110 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\CAPIEngine">
+      <UniqueIdentifier>{7e77c69e-e8a6-479f-b7d9-f976d094f7e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\CInputMgr">
+      <UniqueIdentifier>{5e274771-c3fc-4d04-a085-1bc9780f0356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object">
+      <UniqueIdentifier>{fc396f02-50ae-410f-bf53-c62fc22a7776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\CTexture">
+      <UniqueIdentifier>{ddbccebd-3afc-49dd-bacb-bf3891105de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Physics">
+      <UniqueIdentifier>{fa7c35c0-37c4-4719-a1e8-b766ee893533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\base">
+      <UniqueIdentifier>{5870418b-a4ed-4661-9cf6-484fa42e2e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\macro">
+      <UniqueIdentifier>{69fa4524-373e-444c-ab7e-45d4d776c632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Physics\Vector">
+      <UniqueIdentifier>{72cfbf49-e1ca-436f-8497-25578976fb01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Physics\Mgr">
+      <UniqueIdentifier>{1af4516a-5c49-4226-9c95-c83ffe65fafa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Physics\Collision">
+      <UniqueIdentifier>{c9b1d11a-bf97-422e-98e5-e3dfac269d06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SVector2D.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CAPIEngine.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\CAPIEngine</Filter>
     </ClCompile>
     <ClCompile Include="CInputMgr.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\CInputMgr</Filter>
     </ClCompile>
     <ClCompile Include="CObject.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="CRef.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CTexture.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="CUnit.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>소스 파일\CTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="SVector2D.cpp">
+      <Filter>소스 파일\Physics\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>소스 파일\Physics\Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>소스 파일\Physics\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAPIEngine.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\CAPIEngine</Filter>
     </ClInclude>
     <ClInclude Include="CInputMgr.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\CInputMgr</Filter>
     </ClInclude>
     <ClInclude Include="CObject.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="CRef.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CTexture.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="CUnit.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>소스 파일\CTexture</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\base</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일\base</Filter>
     </ClInclude>
     <ClInclude Include="macro.h">
+      <Filter>헤더 파일\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="SVector2D.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Physics\Vector</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>소스 파일\Physics\Mgr</Filter>
     </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>소스 파일\Physics\Collision</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinAPIEngine.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 #include "CActor.h"
 #include "CBullet.h"
 #include "CEnemy.h"
+#include "CCollisionMgr.h"
 #include <vector>
 
 #include <list>
@@ -23,6 +24,8 @@ public:
 public:
 	virtual void OnCreate() override {
 		CAPIEngine::OnCreate();
+
+		CCollisionMgr::GetInstance();
 
 		/*CInputMgr::GetInstance()->Create(m_hWnd);*/
 		CInputMgr::GetInstance()->AddKey("OnFire", VK_SPACE);
@@ -59,18 +62,19 @@ public:
 			m_Bullets.push_back(pBullet);
 			pBullet->AddRef();
 
+			CCollisionMgr::GetInstance()->AddUnit(pBullet);
+
 			m_Objects.push_back(pBullet);
 			pBullet->AddRef();
 
 			pBullet->Release();
 			pBullet = nullptr;
 		}
-
 		// 적 생성
 		m_pEnemy = InstantObject<CEnemy>(m_PFEnemy);
 		m_pEnemy->AddRef();
 		m_pEnemy->SetVelocity(SVector2D(+1.0f, 0.0f) * 100.0f);
-
+		CCollisionMgr::GetInstance()->AddUnit(m_pEnemy);
 		// 적(조준탄발사) 생성
 		//m_pEnemyAimed = InstantObject<CEnemy>(m_PFEnemy);
 		//m_pEnemyAimed->AddRef();
@@ -185,6 +189,8 @@ public:
 		SAFE_DELETE(m_pTextBullet);
 		SAFE_DELETE(m_Ctexture);
 		
+		CCollisionMgr::ReleaseInstance();
+		CInputMgr::ReleaseInstance();
 		CAPIEngine::OnDestroy();
 	}
 
@@ -193,43 +199,27 @@ public:
 
 
 		// collision circle
+		CCollisionMgr::GetInstance()->Update(deltaTime);
 
 		// 적 vs 주인공 탄환 오브젝트의 충돌 확인
-		vector<CBullet*>::iterator its;
-		for (its = m_Bullets.begin(); its != m_Bullets.end(); its++) {
-			if ((*its)->GetIsActive()) {
-				// 원 대 원 충돌
-				//if (m_pEnemy->GetIsActive()) {
-				//	// 제곱근은 무한의 개념이 들어가기 때문에 연산이 느리다. 
-				//	// 그래서 그냥 제곱한 상태로 거리를 체크하는 방식을 많이 사용한다.
-				//	float addR =	((*its)->GetRadius() + m_pEnemy->GetRadius()) * 
-				//					((*its)->GetRadius() + m_pEnemy->GetRadius());
-				//	float distance =	((*its)->GetPosition().m_X - m_pEnemy->GetPosition().m_X) /* x거리 제곱*/
-				//					   *((*its)->GetPosition().m_X - m_pEnemy->GetPosition().m_X) +
-				//						((*its)->GetPosition().m_Y - m_pEnemy->GetPosition().m_Y) /* y거리 제곱*/
-				//					   *((*its)->GetPosition().m_Y - m_pEnemy->GetPosition().m_Y);
-				//	if (distance <= addR) {
-				//		OutputDebugString(L"OnTrigger\n");
-				//		(*its)->SetIsActive(false);
-				//		m_pEnemy->SetIsActive(false);
-				//		break;
-				//	}
-				//}
-				//else { break; }
-
-				// AABB 충돌 테스트
-				if (m_pEnemy->GetIsActive()) {
-					if (m_pEnemy->IsTrigger(*(*its))) {
-						OutputDebugString(L"CollisionRect!!!!!!!!!!!\n");
-						(*its)->SetIsActive(false);
-						m_pEnemy->SetIsActive(false);
-						break;
-					}
-				}
-				else { break; }
-			}
-			else { break; }
-		}
+		//vector<CBullet*>::iterator its;
+		//for (its = m_Bullets.begin(); its != m_Bullets.end(); its++) {
+		//	if ((*its)->GetIsActive()) {
+		//		if (m_pEnemy->GetIsActive()) {
+		//			bool isCollision = false;
+		//			/*isCollision = (*its)->GetCollider()->DoCollision(m_pEnemy->GetCollider(), 1);*/
+		//			isCollision = (*its)->GetCollider()->DoCollisionby(m_pEnemy);
+		//			if (isCollision) {
+		//				OutputDebugString(L"Collision!!!!!!!!!!!!!!!!!!!!!\n");
+		//				(*its)->SetIsActive(false);
+		//				m_pEnemy->SetIsActive(false);
+		//				break;
+		//			}
+		//		}
+		//		else { break; }
+		//	}
+		//	else { break; }
+		//}
 		
 
 
