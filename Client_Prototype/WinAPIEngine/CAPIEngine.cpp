@@ -2,6 +2,7 @@
 #include "CAPIEngine.h"
 #include "CTexture.h"
 #include "CInputMgr.h"
+#include "CCollisionMgr.h"
 
 HINSTANCE CAPIEngine::hInst = nullptr;
 
@@ -13,8 +14,6 @@ CAPIEngine::CAPIEngine() :m_ClientWidth(800.0f), m_ClientHeight(600.0f) {
 CAPIEngine::~CAPIEngine() {}
 
 BOOL CAPIEngine::Create(HINSTANCE hInstance, int nCmdShow) {
-    /*LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_CLIENTVIEWCODEINIT, szWindowClass, MAX_LOADSTRING);*/
     wsprintf(szTitle, L"WinAPIEngine");
     wsprintf(szWindowClass, L"WinAPIEngine");
     MyRegisterClass(hInstance);
@@ -35,6 +34,7 @@ MSG CAPIEngine::Run() {
     m_pBackBuffer->CreateBackBuffer(crt, hInst, m_hDC);
 
     CInputMgr::GetInstance();
+    CCollisionMgr::GetInstance();
 
     OnCreate();
     QueryPerformanceFrequency(&m_Second);
@@ -51,12 +51,14 @@ MSG CAPIEngine::Run() {
             m_DeltaTime = static_cast<float>(tTime.QuadPart - m_Time.QuadPart) /
                           static_cast<float>(m_Second.QuadPart);
             m_Time = tTime;
+            CCollisionMgr::GetInstance()->Update(m_DeltaTime);
             OnUpdate(m_DeltaTime);
         }
     }
     OnDestroy();
 
-    CInputMgr::GetInstance()->ReleaseInstance();
+    CInputMgr::ReleaseInstance();
+    CCollisionMgr::ReleaseInstance();
 
     if (m_pBackBuffer != nullptr) {
         delete m_pBackBuffer;

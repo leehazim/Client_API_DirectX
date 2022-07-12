@@ -1,5 +1,6 @@
 #pragma once
 #include "CUnit.h"
+#include <windows.h>
 #include <vector>
 
 class CBullet;
@@ -19,11 +20,18 @@ public:
 	void DoFireAimed(std::vector<CBullet*>& bullets, CObject* pObject);
 	void DoFireCircle(std::vector<CBullet*>& bullets);
 
+	virtual void OnEnterCollision(CCollider* other) override {
+		OutputDebugString(L"CEnemy::Enter Collision\n");
+		if (other->GetOnwerObject()->GetTag() == "tagActorBullet") {
+			this->SetIsActive(false);
+			static_cast<CUnit*>(other->GetOnwerObject())->SetIsActive(false);
+		}
+	}
+
 public:
 	float m_TimeTick = 0.0f;
 
 private:
 	int m_CurrentIndex = 0;
-
 };
 

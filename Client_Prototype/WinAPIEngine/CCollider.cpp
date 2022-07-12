@@ -66,6 +66,29 @@ CObject* CCollider::GetOnwerObject() const {
 	return m_pObject;
 }
 
+void CCollider::AddToCollisions(CCollider* pCollider) {
+	m_Collisions.push_back(pCollider);
+}
+
+void CCollider::EraseFromCollisions(CCollider* pCollider) {
+	std::list<CCollider*>::iterator it;
+	// Å½»ö ÈÄ Á¦°Å
+	for (it = m_Collisions.begin(); it != m_Collisions.end(); it++) {
+		if ((*it) == pCollider) {
+			m_Collisions.erase(it);
+			break;
+		}
+	}
+}
+
+bool CCollider::DoCheckBeInCollisions(CCollider* pCollider) {
+	std::list<CCollider*>::iterator it;
+	for (it = m_Collisions.begin(); it != m_Collisions.end(); it++) {
+		if ((*it) == pCollider) return true;
+	}
+	return false;
+}
+
 bool CCollider::DoCollisionAABB(CCollider* other) {
 	SVector2D anchors = m_pObject->GetAnchors();
 	float leftX = m_Position.m_X - m_Width * anchors.m_X;

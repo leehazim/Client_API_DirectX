@@ -9,15 +9,22 @@ CCollisionMgr::CCollisionMgr() {}
 CCollisionMgr::~CCollisionMgr() {}
 
 void CCollisionMgr::AddUnit(CUnit* target) {
-	
 	m_CollisionUnits.push_back(target);
+}
+
+void CCollisionMgr::DeleteUnit(CUnit* target) {
+	std::list<CUnit*>::iterator it;
+	for (it = m_CollisionUnits.begin(); it != m_CollisionUnits.end(); it++) {
+		if ((*it) == target) {
+			m_CollisionUnits.erase(it);
+			break;
+		}
+	}
 }
 
 void CCollisionMgr::Update(float deltaTime) {
 	std::list<CUnit*>::iterator itFirst, itSecond;
 	int count = 0;
-	// 반복자를 자신의 다음거 부터 비교하는데 이미 비교한 본인은 다음 비교대상에서 제외하는 비교 알고리즘
-	// 버블정렬과 비슷한 모습으로 검사하고 싶을때
 	for (itFirst = m_CollisionUnits.begin(); itFirst != m_CollisionUnits.end(); itFirst++) {
 		itSecond = itFirst;
 		itSecond++;
@@ -36,9 +43,30 @@ bool CCollisionMgr::DoCollision(CUnit* tThis, CUnit* other) {
 
 	bool result = pThis->DoCollision(pOther, 0);
 	if (result) {
-		//TODO : 아직 안끝남
-		OutputDebugString(L"Collision!!!!!!!!\n");
-		return true;
+		bool isBe = pThis->DoCheckBeInCollisions(pOther);
+		if (!isBe) {
+			pThis->AddToCollisions(pOther);
+			pOther->AddToCollisions(pThis);
+			OutputDebugString(L"Enter Collision \n");
+
+			pThis->GetOnwerObject()->OnEnterCollision(pOther);
+			pOther->GetOnwerObject()->OnEnterCollision(pThis);
+		}
+		else {
+			//OutputDebugString(L"Stay Collision\n");
+			pThis->GetOnwerObject()->OnStayCollision(pOther);
+			pOther->GetOnwerObject()->OnStayCollision(pThis);
+		}
+	}
+	else if(pThis->DoCheckBeInCollisions(pOther)) {
+		// 현재는 충돌 상태가 아니지만 이전에는 충돌
+		// 충돌이 끝나는 상태
+		pThis->EraseFromCollisions(pOther);
+		pOther->EraseFromCollisions(pThis);
+		OutputDebugString(L"Exit Collision\n");
+
+		pThis->GetOnwerObject()->OnEndCollision(pOther);
+		pOther->GetOnwerObject()->OnEndCollision(pThis);
 	}
 	
 

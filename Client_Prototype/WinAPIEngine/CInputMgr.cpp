@@ -35,7 +35,6 @@ void CInputMgr::Update() {
 		for (int ti = 0; ti < it->second->m_VecKey.size(); ti++)
 			if (GetAsyncKeyState(it->second->m_VecKey[ti]) & 0x8000) {
 				pushCount++;
-			
 			}
 
 		//if (pushCount >= 1) 

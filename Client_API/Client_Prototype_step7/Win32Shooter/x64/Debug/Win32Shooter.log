@@ -1,0 +1,9 @@
+﻿  main.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CInputMgr.h(52,1): warning C4311: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 포인터가 잘립니다.
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\Win32Shooter\main.cpp(31): message : 컴파일되는 함수 템플릿 인스턴스화 'bool CInputMgr::AddKey<char[7],int>(const __type (&),const int &)'에 대한 참조를 확인하세요.
+          with
+          [
+              __type=char [7]
+          ]
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CInputMgr.h(52,1): warning C4302: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 잘립니다.
+  Win32Shooter.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\bin\Win32Shooter.exe

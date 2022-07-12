@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include "macro.h"
 #include "CUnit.h"
+#include "CCollisionMgr.h"
 
 #define MAX_LOADSTRING					100
 
@@ -80,6 +81,7 @@ inline __type* CAPIEngine::CreatePrefab(CTexture* pText, float anchorX, float an
 	pPrefab->SetAnchors(anchorX, anchorY);
 	pPrefab->SetPosition(position);
 
+	pPrefab->SetColliderPos();
 	pPrefab->SetIsActive(true);
 
 	return pPrefab;
@@ -88,10 +90,12 @@ inline __type* CAPIEngine::CreatePrefab(CTexture* pText, float anchorX, float an
 template<typename __type>
 inline __type* CAPIEngine::InstantObject(CUnit* pPrefab) {
 	__type* pUnit = static_cast<__type*>(pPrefab->Clone());
+	CCollisionMgr::GetInstance()->AddUnit(pUnit);
 	return pUnit;
 }
 
 template<typename __type>
 inline void CAPIEngine::DestroyObject(__type*& unit) {
+	CCollisionMgr::GetInstance()->DeleteUnit(unit);
 	SAFE_DELETE(unit);
 }

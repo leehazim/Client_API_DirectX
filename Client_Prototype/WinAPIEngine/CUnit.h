@@ -40,6 +40,14 @@ public:
 public:
 	virtual CObject* Clone() = 0;
 
+	virtual void OnEnterCollision(CCollider* other) override {}
+	virtual void OnStayCollision(CCollider* other)	override {}
+	virtual void OnEndCollision(CCollider* other) 	override {}
+
+	void SetColliderPos() {
+		m_pCollider->SetPosition(this->GetPosition());
+	}
+
 protected:
 
 	// ¹ÝÁö¸§

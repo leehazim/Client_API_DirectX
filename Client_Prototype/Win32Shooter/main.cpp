@@ -25,7 +25,7 @@ public:
 	virtual void OnCreate() override {
 		CAPIEngine::OnCreate();
 
-		CCollisionMgr::GetInstance();
+		/*CCollisionMgr::GetInstance();*/
 
 		/*CInputMgr::GetInstance()->Create(m_hWnd);*/
 		CInputMgr::GetInstance()->AddKey("OnFire", VK_SPACE);
@@ -59,10 +59,10 @@ public:
 
 			pBullet->SetIsActive(false);
 
+			pBullet->SetTag("tagActorBullet");
 			m_Bullets.push_back(pBullet);
 			pBullet->AddRef();
-
-			CCollisionMgr::GetInstance()->AddUnit(pBullet);
+			
 
 			m_Objects.push_back(pBullet);
 			pBullet->AddRef();
@@ -74,7 +74,7 @@ public:
 		m_pEnemy = InstantObject<CEnemy>(m_PFEnemy);
 		m_pEnemy->AddRef();
 		m_pEnemy->SetVelocity(SVector2D(+1.0f, 0.0f) * 100.0f);
-		CCollisionMgr::GetInstance()->AddUnit(m_pEnemy);
+
 		// 적(조준탄발사) 생성
 		//m_pEnemyAimed = InstantObject<CEnemy>(m_PFEnemy);
 		//m_pEnemyAimed->AddRef();
@@ -96,6 +96,7 @@ public:
 
 			pBulletEnemy->SetIsActive(false);
 
+			pBulletEnemy->SetTag("tagEnemyBullet");
 			m_EnemyBullet.push_back(pBulletEnemy);
 			pBulletEnemy->AddRef();
 
@@ -189,8 +190,8 @@ public:
 		SAFE_DELETE(m_pTextBullet);
 		SAFE_DELETE(m_Ctexture);
 		
-		CCollisionMgr::ReleaseInstance();
-		CInputMgr::ReleaseInstance();
+		/*CCollisionMgr::ReleaseInstance();*/
+		//CInputMgr::ReleaseInstance();
 		CAPIEngine::OnDestroy();
 	}
 
@@ -199,7 +200,7 @@ public:
 
 
 		// collision circle
-		CCollisionMgr::GetInstance()->Update(deltaTime);
+		/*CCollisionMgr::GetInstance()->Update(deltaTime);*/
 
 		// 적 vs 주인공 탄환 오브젝트의 충돌 확인
 		//vector<CBullet*>::iterator its;

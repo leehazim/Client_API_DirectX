@@ -37,6 +37,7 @@ CUnit::CUnit(const CUnit& other) {
 	m_pEngine = other.m_pEngine;
 
 	m_IsActive = other.m_IsActive;
+	m_Tag = other.m_Tag;
 	
 	// 깊은 복사
 	m_pCollider = new CCollider();
@@ -66,6 +67,7 @@ CUnit& CUnit::operator=(const CUnit& other) {
 	m_pEngine = other.m_pEngine;
 
 	m_IsActive = other.m_IsActive;
+	m_Tag = other.m_Tag;
 
 	// 하지만 직접 값을 대입하고 해제도 하는 콜라이더는 모든 유닛이 따로 가지고있다.
 	m_pCollider = new CCollider();
