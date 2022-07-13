@@ -5,6 +5,7 @@
 
 class CTexture;
 class CAPIEngine;
+class CAnimator;
 
 class CUnit 
 	: public CObject {
@@ -15,7 +16,6 @@ public:
 	virtual ~CUnit();
 
 public:
-
 	virtual void Create(CAPIEngine* pEngine);
 	virtual void Destroy();
 
@@ -35,6 +35,9 @@ public:
 	void SetRadius(float radius);
 	float GetRadius() const;
 
+	float GetDisplayX() const { return m_DisplayX; }
+	float GetDisplayY() const { return m_DisplayY; }
+
 	CCollider* GetCollider() const;
 
 public:
@@ -48,9 +51,10 @@ public:
 		m_pCollider->SetPosition(this->GetPosition());
 	}
 
-protected:
+	CAnimator* CreateAnimator(const std::string id, CAPIEngine* pEngine);
+	void DestroyAnimator();
 
-	// ¹ÝÁö¸§
+protected:
 	float m_Radius = 0.0f;
 
 	float m_DisplayX = 0.0f;
@@ -65,4 +69,5 @@ protected:
 
 protected:
 	CCollider* m_pCollider = nullptr;
+	CAnimator* m_pAnimator = nullptr;
 };

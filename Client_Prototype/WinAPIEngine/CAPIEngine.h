@@ -40,6 +40,9 @@ public:
 	float GetClientWidth() const;
 	float GetClientHeight() const;
 
+	HDC GetHDC() const { return m_hDC; }
+	HINSTANCE GetHInst() const { return hInst; }
+
 protected:
 	// Create내부 함수랩핑
 	ATOM MyRegisterClass(HINSTANCE hInstance);

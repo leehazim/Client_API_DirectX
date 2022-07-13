@@ -17,6 +17,7 @@ CActor::CActor(const CActor& tActor)
 CActor::~CActor() {}
 
 void CActor::DoFire(std::vector<CBullet*>& bullets) {
+	if (!m_IsActive) return;
 	float zero = 0.0f;
 	float direction = -1.0f;
 	float velocity = 200.0f;

@@ -8,6 +8,7 @@
 #include "CBullet.h"
 #include "CEnemy.h"
 #include "CCollisionMgr.h"
+#include "CAnimator.h"
 #include <vector>
 
 #include <list>
@@ -50,6 +51,9 @@ public:
 		// 플레이어 생성
 		m_pActor = InstantObject<CActor>(m_PFActor);
 		m_pActor->AddRef();
+
+		CAnimator* pAnimActor = m_pActor->CreateAnimator("AnimActor", this);
+		pAnimActor->AddAniSeq("ani_idle_actor", 1.0f, 2, L"resources/bongbong");
 
 		// 탄환 생성
 		CBullet* pBullet = nullptr;
@@ -140,9 +144,13 @@ public:
 		//	pBulletEnemy->Release();
 		//	pBulletEnemy = nullptr;
 		//}
+
+	
 	}
 
 	virtual void OnDestroy() override {
+
+		
 
 		// 적탄환 파괴
 		vector<CBullet*>::iterator it;
@@ -306,6 +314,8 @@ public:
 			(*it)->Render();
 		for (it = m_CircleBullet.begin(); it != m_CircleBullet.end(); it++)
 			(*it)->Render();*/
+
+		
 
 		this->Present();
 	}

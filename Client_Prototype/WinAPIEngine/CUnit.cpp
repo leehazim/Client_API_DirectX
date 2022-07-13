@@ -1,6 +1,7 @@
 #include "CUnit.h"
 #include "CAPIEngine.h"
 #include "CTexture.h"
+#include "CAnimator.h"
 
 CUnit::CUnit() :
 	CObject(),
@@ -101,7 +102,13 @@ void CUnit::Render() {
 		m_DisplayX = m_Position.m_X - m_Width * m_AnchorX;
 		m_DisplayY = m_Position.m_Y - m_Height * m_AnchorY;
 
-		m_pEngine->DrawTexture(m_DisplayX, m_DisplayY, m_pCTexture);
+		if (m_pAnimator != nullptr) {
+			m_pAnimator->UpdateAnimation(m_pEngine->m_DeltaTime);
+			m_pAnimator->Render(m_pEngine, m_DisplayX, m_DisplayY);
+		}
+		else {
+			m_pEngine->DrawTexture(m_DisplayX, m_DisplayY, m_pCTexture);
+		}
 		/*m_pEngine->DrawCircle(m_Position.m_X, m_Position.m_Y, m_Radius);*/
 	}
 }
@@ -145,6 +152,21 @@ float CUnit::GetRadius() const {
 
 CCollider* CUnit::GetCollider() const {
 	return m_pCollider;
+}
+
+CAnimator* CUnit::CreateAnimator(const std::string id, CAPIEngine* pEngine) {
+	m_pAnimator = new CAnimator();
+	m_pAnimator->SetId(id);
+	m_pAnimator->Create(pEngine);
+	if (!m_pAnimator) return nullptr;
+	return m_pAnimator;
+}
+
+void CUnit::DestroyAnimator() {
+	if (m_pAnimator) {
+		m_pAnimator->Destroy();
+	}
+	SAFE_DELETE(m_pAnimator);
 }
 
 void CUnit::SetRadius(float radius) {

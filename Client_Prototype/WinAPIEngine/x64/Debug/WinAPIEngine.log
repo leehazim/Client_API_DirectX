@@ -1,27 +1,4 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output 디렉터리가 슬래시로 끝나지 않습니다. Output 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
-  CAPIEngine.cpp
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(30,24): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(30,24): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(30,39): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(30,39): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(126,22): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(126,22): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(126,37): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(126,37): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(160,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(160,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(159,52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(159,40): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(166,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(166,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(183,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(183,46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(193,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAPIEngine.cpp(193,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CCollider.cpp
-  CCollisionMgr.cpp
-  CObject.cpp
-  CTexture.cpp
-  CUnit.cpp
-  코드를 생성하고 있습니다...
+  CAnimator.cpp
+C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\WinAPIEngine\CAnimator.cpp(42): warning C4717: 'CAnimator::operator=': 모든 제어 경로에서 재귀적입니다. 함수로 인해 런타임 스택 오버플로가 발생합니다.
   WinAPIEngine.vcxproj -> C:\Users\User\Documents\GitHub\Client_API_DirectX\Client_Prototype\bin\WinAPIEngine.lib

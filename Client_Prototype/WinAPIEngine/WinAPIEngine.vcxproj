@@ -143,6 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CAniSeq.cpp" />
     <ClCompile Include="CAPIEngine.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCollisionMgr.cpp" />
@@ -154,6 +156,8 @@
     <ClCompile Include="SVector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CAniSeq.h" />
     <ClInclude Include="CAPIEngine.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="CCollisionMgr.h" />
