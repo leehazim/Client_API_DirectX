@@ -9,8 +9,8 @@
 #include "CEnemy.h"
 #include "CCollisionMgr.h"
 #include "CAnimator.h"
-#include <vector>
 
+#include <vector>
 #include <list>
 using namespace std;
 
@@ -33,11 +33,21 @@ public:
 		CInputMgr::GetInstance()->AddKey("OnMoveLeft", 'A');
 		CInputMgr::GetInstance()->AddKey("OnMoveRight", 'D');
 
+		CInputMgr::GetInstance()->AddKey("OnTest_1", VK_CONTROL, 'H');
+		CInputMgr::GetInstance()->AddKey("OnTest_0", VK_CONTROL, 'G');
+
 		// 플레이어 prefab
 		m_Ctexture = new CTexture();
 		m_Ctexture->LoadTexture(this->hInst, this->m_hDC, L"resources/bongbong_0.bmp");
 		m_PFActor = CreatePrefab<CActor>(m_Ctexture, 0.5f, 0.5f, SVector2D(400.0f, 500.0f));
-		
+
+		// 원본에 애니메이터 만들어서 복사되는 오브젝트들이 모두 애니메이터를 할 당 받게 함
+		CAnimator* pAnimActor = m_PFActor->CreateAnimator("AnimActor", this);
+		pAnimActor->SetOwnerObject(m_PFActor);
+		pAnimActor->AddAniSeq("ani_idle_actor", 1.0f, 2, L"resources/bongbong");
+		pAnimActor->AddAniSeq("ani_super_actor", 1.0f, 1, L"resources/bongbong_super");
+		m_PFActor->GetAnimator()->SetKey("ani_idle_actor");
+
 		// 탄환 prefab
 		m_pTextBullet = new CTexture();
 		m_pTextBullet->LoadTexture(this->hInst, this->m_hDC, L"resources/bongbullet.bmp");
@@ -45,15 +55,17 @@ public:
 
 		// 적 prefab
 		m_pTextEnemy = new CTexture();
-		m_pTextEnemy->LoadTexture(this->hInst, this->m_hDC, L"resources/bongenemy.bmp");
+		/*m_pTextEnemy->LoadTexture(this->hInst, this->m_hDC, L"resources/bongenemy.bmp");*/
+		m_pTextEnemy->LoadTexture(this->hInst, this->m_hDC, L"resources/paladin_idle_0.bmp");
 		m_PFEnemy = CreatePrefab<CEnemy>(m_pTextEnemy, 0.5f, 0.5f, SVector2D(400.0f, 100.0f));
 
 		// 플레이어 생성
 		m_pActor = InstantObject<CActor>(m_PFActor);
 		m_pActor->AddRef();
 
-		CAnimator* pAnimActor = m_pActor->CreateAnimator("AnimActor", this);
-		pAnimActor->AddAniSeq("ani_idle_actor", 1.0f, 2, L"resources/bongbong");
+		// 액터에 바로 설정하던 것
+		/*CAnimator* pAnimActor = m_pActor->CreateAnimator("AnimActor", this);
+		pAnimActor->AddAniSeq("ani_idle_actor", 1.0f, 2, L"resources/bongbong");*/
 
 		// 탄환 생성
 		CBullet* pBullet = nullptr;
@@ -145,12 +157,9 @@ public:
 		//	pBulletEnemy = nullptr;
 		//}
 
-	
 	}
 
 	virtual void OnDestroy() override {
-
-		
 
 		// 적탄환 파괴
 		vector<CBullet*>::iterator it;
@@ -246,7 +255,14 @@ public:
 		if (CInputMgr::GetInstance()->KeyDown("OnFire")) {
 			m_pActor->DoFire(m_Bullets);
 		}
-
+	
+		// test
+		if (CInputMgr::GetInstance()->KeyDown("OnTest_1")) {
+			m_pActor->GetAnimator()->SetKey("ani_idle_actor");
+		}
+		if (CInputMgr::GetInstance()->KeyDown("OnTest_0")) {
+			m_pActor->GetAnimator()->SetKey("ani_super_actor");
+		}
 		// 주기적으로 탄환 발사
 
 		/*float timer = 3.0f;
@@ -289,7 +305,7 @@ public:
 		
 		// 적, 적탄환 업데이트
 		m_pEnemy->Update(deltaTime);
-	/*	m_pEnemyAimed->Update(deltaTime);
+	  /*m_pEnemyAimed->Update(deltaTime);
 		m_pEnemyCircle->Update(deltaTime);*/
 		for (it = m_EnemyBullet.begin(); it != m_EnemyBullet.end(); it++) 
 			(*it)->Update(deltaTime);
@@ -344,8 +360,8 @@ public:
 	list<CObject*> m_Objects;
 
 private:
-	LSHEngine(const LSHEngine& other) {}
-	LSHEngine& operator=(const LSHEngine& other) {}
+	LSHEngine(const LSHEngine& other) = delete;
+	LSHEngine& operator=(const LSHEngine& other) = delete;
 };
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {

@@ -1,5 +1,4 @@
 #include "CAnimator.h"
-#include "CAniSeq.h"
 #include "macro.h"
 #include "CTexture.h"
 #include "CAPIEngine.h"
@@ -17,7 +16,13 @@ CAnimator::CAnimator(const CAnimator& other) {
 	// 시퀀스 자체는 공유해서는 안된다.
 	// 최근 시퀀스가 변했을 때 변하지 않아야 하는 복사된 Object도 함께 변하는 버그가 생긴다.
 	// 간단하게 얕은 복사 
-	*this = other;
+	/**this = other;*/
+	m_Id = other.m_Id;
+	m_pEngine = other.m_pEngine;
+	m_pCurAniSeq = other.m_pCurAniSeq;
+	m_StrKeyCurAniSeq = other.m_StrKeyCurAniSeq;
+	m_StrKeyPrevAniSeq = other.m_StrKeyPrevAniSeq;
+	m_pOnwerObject = other.m_pOnwerObject;
 
 	// 얕은 복사 후 세팅
 	m_AniSeqs.clear();
@@ -30,7 +35,13 @@ CAnimator::CAnimator(const CAnimator& other) {
 }
 
 void CAnimator::operator=(const CAnimator& other) {
-	*this = other;
+	//*this = other;
+	m_Id = other.m_Id;
+	m_pEngine = other.m_pEngine;
+	m_pCurAniSeq = other.m_pCurAniSeq;
+	m_StrKeyCurAniSeq = other.m_StrKeyCurAniSeq;
+	m_StrKeyPrevAniSeq = other.m_StrKeyPrevAniSeq;
+	m_pOnwerObject = other.m_pOnwerObject;
 
 	m_AniSeqs.clear();
 	std::unordered_map<std::string, CAniSeq*>::const_iterator it;
@@ -50,8 +61,9 @@ CAnimator::~CAnimator() {
 }
 
 void CAnimator::UpdateAnimation(float deltaTime) {
-	this->m_StrKeyCurAniSeq = "ani_idle_actor";
+	/*this->m_StrKeyCurAniSeq = "ani_idle_actor";*/
 	std::unordered_map<std::string, CAniSeq*>::iterator it = m_AniSeqs.find(m_StrKeyCurAniSeq);
+	/*if (it == m_AniSeqs.end()) PostQuitMessage(0)*/;
 	m_pCurAniSeq = it->second;
 
 	m_pCurAniSeq->Update(deltaTime);
@@ -63,13 +75,30 @@ void CAnimator::Render(CAPIEngine* pEngine, float x, float y) {
 	if (pTex) {
 		m_pEngine->DrawTexture(x, y, pTex);
 	}
+	switch (m_pCurAniSeq->GetIsLoop()) {
+	case ANI_INFO::LOOP:
+	{
+	}
+	break;
+	case ANI_INFO::ONCE:
+	{
+		if (m_pCurAniSeq->GetCurIndex() == m_pCurAniSeq->GetTotalFrameCount() - 1) {
+			m_StrKeyCurAniSeq = m_StrKeyPrevAniSeq;
+			m_pCurAniSeq->SetCurIndex(0);
+			m_pCurAniSeq->SetAniTime(0.0f);
+		}
+	}
+	break;
+	}
 }
 
-bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int totalFrameCount, LPCWSTR pFileName) {
+bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int totalFrameCount, LPCWSTR pFileName, ANI_INFO isLoopOption) {
 	CAniSeq* pClip = new CAniSeq();
 
+	pClip->SetId(name);
 	pClip->SetTimeInterval(timeInterval);
 	pClip->SetTotalFrameCount(totalFrameCount);
+	pClip->SetIsLoop(isLoopOption);
 
 	for (int i = 0; i < totalFrameCount; i++) {
 		CTexture* pTex = nullptr;
