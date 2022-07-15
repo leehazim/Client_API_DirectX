@@ -59,6 +59,13 @@ public:
 		m_pTextEnemy->LoadTexture(this->hInst, this->m_hDC, L"resources/paladin_idle_0.bmp");
 		m_PFEnemy = CreatePrefab<CEnemy>(m_pTextEnemy, 0.5f, 0.5f, SVector2D(400.0f, 100.0f));
 
+		//TODO: Test
+		CAnimator* pAnimEnemy = m_PFEnemy->CreateAnimator("AnimEnemy", this);
+		pAnimEnemy->SetOwnerObject(m_PFEnemy);
+		pAnimEnemy->AddAniSeq("ani_idle_enemy", 0.05f, 7, L"resources/paladin_idle");
+		pAnimEnemy->AddAniSeq("ani_attack_enemy", 0.08f, 10, L"resources/paladin_attack", ANI_INFO::ONCE);
+		pAnimEnemy->SetDefaultAniSeq("ani_idle_enemy");
+		
 		// 플레이어 생성
 		m_pActor = InstantObject<CActor>(m_PFActor);
 		m_pActor->AddRef();
@@ -79,7 +86,6 @@ public:
 			m_Bullets.push_back(pBullet);
 			pBullet->AddRef();
 			
-
 			m_Objects.push_back(pBullet);
 			pBullet->AddRef();
 
@@ -90,6 +96,7 @@ public:
 		m_pEnemy = InstantObject<CEnemy>(m_PFEnemy);
 		m_pEnemy->AddRef();
 		m_pEnemy->SetVelocity(SVector2D(+1.0f, 0.0f) * 100.0f);
+		
 
 		// 적(조준탄발사) 생성
 		//m_pEnemyAimed = InstantObject<CEnemy>(m_PFEnemy);
@@ -284,18 +291,25 @@ public:
 			float diff = m_pEnemyAimed->m_TimeTick - timer2;
 			m_pEnemyAimed->m_TimeTick = diff;
 		}
-		else {
+		else {d
 			m_pEnemyAimed->m_TimeTick = m_pEnemyAimed->m_TimeTick + deltaTime;
 		}*/
 		float timer = 2.0f;
 		if (m_pEnemy->m_TimeTick >= timer) {
-			m_pEnemy->DoFireCircle(m_EnemyBullet);
-			
+			m_pEnemy->GetAnimator()->PlayAni("ani_attack_enemy");
+			isFire = true;
+			//m_pEnemy->DoFire(m_EnemyBullet);
 			float diff = m_pEnemy->m_TimeTick - timer;
 			m_pEnemy->m_TimeTick = diff;
 		}
 		else {
 			m_pEnemy->m_TimeTick = m_pEnemy->m_TimeTick + deltaTime;
+		}
+		if (m_pEnemy->GetAnimator()->GetKey() == "ani_attack_enemy") {
+			if (isFire && m_pEnemy->GetAnimator()->GetAniSeq()->GetCurIndex() == 5) {
+				m_pEnemy->DoFireCircle(m_EnemyBullet);
+				isFire = false;
+			}
 		}
 
 		// 탄환 
@@ -358,6 +372,7 @@ public:
 	vector<CBullet*> m_CircleBullet;*/
 
 	list<CObject*> m_Objects;
+	bool isFire = false;
 
 private:
 	LSHEngine(const LSHEngine& other) = delete;

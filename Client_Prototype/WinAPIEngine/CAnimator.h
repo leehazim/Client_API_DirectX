@@ -27,10 +27,20 @@ public:
 	bool AddAniSeq(const std::string& name,
 				   float timeInterval, int totalFrameCount, LPCWSTR pFileName, ANI_INFO isLoopOption = ANI_INFO::LOOP);
 
+	void SetDefaultAniSeq(const std::string& strDefaultAniSeq);
+	void PlayAni(const std::string& strAniSeq);
+	void LateUpdate();
+
 	void SetOwnerObject(CObject* onwer) { m_pOnwerObject = onwer; }
 	CObject* GetOnwerObject() const { return m_pOnwerObject; }
+
 	std::string GetKey() { return m_StrKeyCurAniSeq; }
 	void SetKey(std::string key) { m_StrKeyCurAniSeq = key; }
+
+	std::string GetPrevKey() const { return m_StrKeyPrevAniSeq; }
+	void SetPrevKey(std::string key) { m_StrKeyPrevAniSeq = key; }
+
+	CAniSeq* GetAniSeq() const { return m_pCurAniSeq; }
 
 private:
 	std::unordered_map<std::string, CAniSeq*> m_AniSeqs;

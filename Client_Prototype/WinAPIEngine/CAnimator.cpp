@@ -24,7 +24,7 @@ CAnimator::CAnimator(const CAnimator& other) {
 	m_StrKeyPrevAniSeq = other.m_StrKeyPrevAniSeq;
 	m_pOnwerObject = other.m_pOnwerObject;
 
-	// 얕은 복사 후 세팅
+	
 	m_AniSeqs.clear();
 	std::unordered_map<std::string, CAniSeq*>::const_iterator it;
 	for (it = other.m_AniSeqs.begin(); it != other.m_AniSeqs.end(); it++) {
@@ -35,7 +35,7 @@ CAnimator::CAnimator(const CAnimator& other) {
 }
 
 void CAnimator::operator=(const CAnimator& other) {
-	//*this = other;
+	
 	m_Id = other.m_Id;
 	m_pEngine = other.m_pEngine;
 	m_pCurAniSeq = other.m_pCurAniSeq;
@@ -61,9 +61,8 @@ CAnimator::~CAnimator() {
 }
 
 void CAnimator::UpdateAnimation(float deltaTime) {
-	/*this->m_StrKeyCurAniSeq = "ani_idle_actor";*/
 	std::unordered_map<std::string, CAniSeq*>::iterator it = m_AniSeqs.find(m_StrKeyCurAniSeq);
-	/*if (it == m_AniSeqs.end()) PostQuitMessage(0)*/;
+
 	m_pCurAniSeq = it->second;
 
 	m_pCurAniSeq->Update(deltaTime);
@@ -75,21 +74,7 @@ void CAnimator::Render(CAPIEngine* pEngine, float x, float y) {
 	if (pTex) {
 		m_pEngine->DrawTexture(x, y, pTex);
 	}
-	switch (m_pCurAniSeq->GetIsLoop()) {
-	case ANI_INFO::LOOP:
-	{
-	}
-	break;
-	case ANI_INFO::ONCE:
-	{
-		if (m_pCurAniSeq->GetCurIndex() == m_pCurAniSeq->GetTotalFrameCount() - 1) {
-			m_StrKeyCurAniSeq = m_StrKeyPrevAniSeq;
-			m_pCurAniSeq->SetCurIndex(0);
-			m_pCurAniSeq->SetAniTime(0.0f);
-		}
-	}
-	break;
-	}
+	LateUpdate();
 }
 
 bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int totalFrameCount, LPCWSTR pFileName, ANI_INFO isLoopOption) {
@@ -112,4 +97,43 @@ bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int total
 	}
 	m_AniSeqs.insert(make_pair(name, pClip));
 	return true;
+}
+
+void CAnimator::SetDefaultAniSeq(const std::string& strDefaultAniSeq) {
+	m_StrKeyCurAniSeq = strDefaultAniSeq;
+	m_StrKeyPrevAniSeq = strDefaultAniSeq;
+
+	if (m_pCurAniSeq != nullptr) {
+		m_pCurAniSeq->SetAniTime(0.0f);
+		m_pCurAniSeq->SetCurIndex(0);
+	}
+}
+
+void CAnimator::PlayAni(const std::string& strAniSeq) {
+	SetPrevKey(m_StrKeyCurAniSeq);
+	SetKey(strAniSeq);
+	if (m_pCurAniSeq != nullptr) {
+		m_pCurAniSeq->SetCurIndex(0);
+		m_pCurAniSeq->SetAniTime(0.0f);
+	}
+}
+
+void CAnimator::LateUpdate() {
+	switch (m_pCurAniSeq->GetIsLoop()) {
+	case ANI_INFO::LOOP:
+	{
+	}
+	break;
+	case ANI_INFO::ONCE:
+	{
+		if (m_pCurAniSeq->GetCurIndex() == m_pCurAniSeq->GetTotalFrameCount() - 1) {
+			if (m_pCurAniSeq->GetAniTime() >= m_pCurAniSeq->GetTimeInterval()) {
+				m_StrKeyCurAniSeq = m_StrKeyPrevAniSeq;
+				m_pCurAniSeq->SetCurIndex(0);
+				m_pCurAniSeq->SetAniTime(0.0f);
+			}
+		}
+	}
+	break;
+	}
 }

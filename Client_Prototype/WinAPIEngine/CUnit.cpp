@@ -98,6 +98,7 @@ void CUnit::Create(CAPIEngine* pEngine) {
 
 void CUnit::Destroy() {
 	SAFE_DELETE(m_pCollider);
+	SAFE_DELETE(m_pAnimator);
 }
 
 void CUnit::Update(float deltaTime) {
@@ -178,6 +179,18 @@ void CUnit::DestroyAnimator() {
 		m_pAnimator->Destroy();
 	}
 	SAFE_DELETE(m_pAnimator);
+}
+
+void CUnit::SetDefaultAniSeq(const std::string& strDefaultAniSeq) {
+	m_pAnimator->SetDefaultAniSeq(strDefaultAniSeq);
+}
+
+void CUnit::PlayAni(const std::string& strAniSeq) {
+	m_pAnimator->PlayAni(strAniSeq);
+}
+
+void CUnit::LateUpdate() {
+	m_pAnimator->LateUpdate();
 }
 
 void CUnit::SetRadius(float radius) {

@@ -56,6 +56,10 @@ public:
 
 	CAnimator* GetAnimator() { return m_pAnimator; }
 
+	void SetDefaultAniSeq(const std::string& strDefaultAniSeq);
+	void PlayAni(const std::string& strAniSeq);
+	void LateUpdate();
+
 protected:
 	float m_Radius = 0.0f;
 
