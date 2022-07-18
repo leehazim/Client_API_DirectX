@@ -6,6 +6,8 @@
 
 #define MAX_LOADSTRING					100
 
+#pragma comment(lib,"msimg32.lib")
+
 class CTexture;
 struct SVector2D;
 
@@ -22,7 +24,12 @@ public:
 	virtual void OnUpdate(float deltaTime);
 
 	void DrawCircle(float X, float Y, float Radius);
-	void DrawTexture(float X, float Y, CTexture* Texture);
+	/*void DrawTexture(float X, float Y, CTexture* Texture);*/
+	// 컬러키를 매개변수로 받을 수 있도록 정의 변경
+	void DrawTexture(float X, float Y, CTexture*, COLORREF color = RGB(255, 255, 255));
+	// 스프라이트 시트를 이용해서 그리는 함수 
+	void DrawSprite(float x, float y, CTexture* texture,
+					int row, int col, int index, COLORREF colorKey = RGB(255, 255, 255));
 	void Clear(float R = 1.0f, float G = 1.0f, float B = 1.0f);
 	void Present();
 

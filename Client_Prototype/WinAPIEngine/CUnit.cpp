@@ -2,6 +2,7 @@
 #include "CAPIEngine.h"
 #include "CTexture.h"
 #include "CAnimator.h"
+#include "CAniSeq.h"
 
 CUnit::CUnit() :
 	CObject(),
@@ -111,14 +112,21 @@ void CUnit::Update(float deltaTime) {
 
 void CUnit::Render() {
 	if (this->GetIsActive()) {
-		m_DisplayX = m_Position.m_X - m_Width * m_AnchorX;
-		m_DisplayY = m_Position.m_Y - m_Height * m_AnchorY;
 
 		if (m_pAnimator != nullptr) {
 			m_pAnimator->UpdateAnimation(m_pEngine->m_DeltaTime);
+
+			m_Width = m_pAnimator->GetAniSeq()->GetSpriteWidth();
+			m_Height = m_pAnimator->GetAniSeq()->GetSpriteHeight();
+			m_DisplayX = m_Position.m_X - m_Width * m_AnchorX;
+			m_DisplayY = m_Position.m_Y - m_Height * m_AnchorY;
+
 			m_pAnimator->Render(m_pEngine, m_DisplayX, m_DisplayY);
 		}
 		else {
+			m_DisplayX = m_Position.m_X - m_Width * m_AnchorX;
+			m_DisplayY = m_Position.m_Y - m_Height * m_AnchorY;
+
 			m_pEngine->DrawTexture(m_DisplayX, m_DisplayY, m_pCTexture);
 		}
 		/*m_pEngine->DrawCircle(m_Position.m_X, m_Position.m_Y, m_Radius);*/

@@ -160,12 +160,39 @@ void CAPIEngine::DrawCircle(float X, float Y, float Radius) {
             X + Radius, Y + Radius);
 }
 
-void CAPIEngine::DrawTexture(float X, float Y, CTexture* Texture) {
+void CAPIEngine::DrawTexture(float X, float Y, CTexture* Texture, COLORREF color) {
     // 백버퍼에 비트맵을 그리기
-    BitBlt(m_pBackBuffer->m_hMemDC,
+    /*BitBlt(m_pBackBuffer->m_hMemDC,
            X, Y,
            Texture->m_Info.bmWidth, Texture->m_Info.bmHeight,
-           Texture->m_hMemDC, 0, 0, SRCCOPY);
+           Texture->m_hMemDC, 0, 0, SRCCOPY);*/
+
+    TransparentBlt(m_pBackBuffer->m_hMemDC,
+                   X, Y,
+                   Texture->m_Info.bmWidth, Texture->m_Info.bmHeight,
+                   Texture->m_hMemDC,
+                   0, 0,
+                   Texture->m_Info.bmHeight, Texture->m_Info.bmHeight,
+                   color);
+}
+
+void CAPIEngine::DrawSprite(float x, float y, CTexture* texture, int row, int col, int index, COLORREF colorKey) {
+    int srcWidth = texture->m_Info.bmWidth / col;
+    int srcHeight = texture->m_Info.bmHeight / row;
+
+    int curRow = index / col;
+    int curCol = index % col;
+
+    int srcX = curCol * srcWidth;
+    int srcY = curRow * srcHeight;
+
+    TransparentBlt(m_pBackBuffer->m_hMemDC,
+                   x, y,
+                   texture->m_Info.bmWidth, texture->m_Info.bmHeight,
+                   texture->m_hMemDC,
+                   srcX, srcY,
+                   srcWidth, srcHeight,
+                   colorKey);
 }
 
 void CAPIEngine::Clear(float R, float G, float B) {

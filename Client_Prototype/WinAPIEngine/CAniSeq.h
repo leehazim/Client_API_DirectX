@@ -9,6 +9,11 @@ enum ANI_INFO {
 	ONCE,
 };
 
+enum ANI_SO {
+	FRAME_FILE = 0,		// 프레임이 파일 하나하나에 할당된 경우
+	SHEET_FILE,			// 프레임이 스프레트시트 방식으로 저장된 경우
+};
+
 class CAniSeq {
 public:
 	CAniSeq() :
@@ -26,6 +31,9 @@ public:
 
 	void Update(float deltaTime);
 
+	void SetSpriteFrameWH(int row = 1, int col = 1);
+
+public:
 	std::string GetId() const { return m_Id; }
 	void SetId(std::string name) { m_Id = name; }
 
@@ -47,15 +55,40 @@ public:
 	ANI_INFO GetIsLoop() const { return m_IsLoop; }
 	void SetIsLoop(ANI_INFO value) { m_IsLoop = value; }
 
+	ANI_SO GetOption() const { return m_SpriteOption; }
+	void SetOption(ANI_SO option) { m_SpriteOption = option; }
+
+	int GetCols() const { return m_Cols; }
+	void SetCols(int cols) { m_Cols = cols; }
+
+	int GetRows() const { return m_Rows; }
+	void SetRows(int rows) { m_Rows = rows; }
+	
+	int GetSpriteWidth() const { return m_SpriteWidth; }
+	void SetSpriteWidth(int width) { m_SpriteWidth = width; }
+
+	int GetSpriteHeight() const { return m_SpriteHeight; }
+	void SetSpriteHeight(int height) { m_SpriteHeight = height; }
+
 private:
 	std::string m_Id;
 	std::vector<CTexture*> m_Textures;
 
-	float m_TimeInterval = 0.1f;	// AnimDeley
-	float m_AnimTime = 0.0f;		// AnimTime
+	float m_TimeInterval = 0.1f;	
+	float m_AnimTime = 0.0f;		
 	
-	int m_TotalFrameCount = 0;		// Sprite Count
-	int m_CurrentFrameIndex = 0;	// Now Sprite Index
+	int m_TotalFrameCount = 0;		
+	int m_CurrentFrameIndex = 0;	
 	
 	ANI_INFO m_IsLoop = ANI_INFO::LOOP;
+	ANI_SO m_SpriteOption = ANI_SO::FRAME_FILE;
+
+	// 스프라이트들의 너비 높이
+	int m_SpriteWidth = 0;
+	int m_SpriteHeight = 0;
+
+	int m_Rows = 0;
+	int m_Cols = 0;
+
+	int m_FrameCol = 0;
 };

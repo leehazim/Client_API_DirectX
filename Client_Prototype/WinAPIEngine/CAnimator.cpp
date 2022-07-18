@@ -69,15 +69,28 @@ void CAnimator::UpdateAnimation(float deltaTime) {
 }
 
 void CAnimator::Render(CAPIEngine* pEngine, float x, float y) {
-	int index = m_pCurAniSeq->GetCurIndex();
-	CTexture* pTex = m_pCurAniSeq->GetTexture(index);
-	if (pTex) {
-		m_pEngine->DrawTexture(x, y, pTex);
+	if (m_pCurAniSeq->GetOption() == ANI_SO::FRAME_FILE) {
+		int index = m_pCurAniSeq->GetCurIndex();
+		CTexture* pTex = m_pCurAniSeq->GetTexture(index);
+		if (pTex) {
+			m_pEngine->DrawTexture(x, y, pTex);
+		}
+		LateUpdate();
 	}
-	LateUpdate();
+	else if (m_pCurAniSeq->GetOption() == ANI_SO::SHEET_FILE) {
+		int index = m_pCurAniSeq->GetCurIndex();
+		CTexture* pTex = m_pCurAniSeq->GetTexture(0);
+		if (pTex) {
+			m_pEngine->DrawSprite(x, y, pTex, m_pCurAniSeq->GetRows(), m_pCurAniSeq->GetCols(), index);
+		}
+		LateUpdate();
+	}
 }
 
-bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int totalFrameCount, LPCWSTR pFileName, ANI_INFO isLoopOption) {
+bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int totalFrameCount,
+						  LPCWSTR pFileName, ANI_INFO isLoopOption,
+						  ANI_SO spriteOption, int row , int col) {
+
 	CAniSeq* pClip = new CAniSeq();
 
 	pClip->SetId(name);
@@ -85,15 +98,35 @@ bool CAnimator::AddAniSeq(const std::string& name, float timeInterval, int total
 	pClip->SetTotalFrameCount(totalFrameCount);
 	pClip->SetIsLoop(isLoopOption);
 
-	for (int i = 0; i < totalFrameCount; i++) {
+	pClip->SetOption(spriteOption);
+
+	pClip->SetCols(col);
+	pClip->SetRows(row);
+
+	if (ANI_SO::FRAME_FILE == spriteOption) {
+		for (int i = 0; i < totalFrameCount; i++) {
+			CTexture* pTex = nullptr;
+			pTex = new CTexture();
+
+			WCHAR szTemp[256] = { 0 };
+			wsprintf(szTemp, L"%s_%d.bmp", pFileName, i);
+
+			pTex->LoadTexture(m_pEngine->GetHInst(), m_pEngine->GetHDC(), szTemp);
+			pClip->SetTextures(pTex);
+		}
+		pClip->SetSpriteFrameWH();
+	}
+	else if (ANI_SO::SHEET_FILE == spriteOption) {
 		CTexture* pTex = nullptr;
 		pTex = new CTexture();
 
 		WCHAR szTemp[256] = { 0 };
-		wsprintf(szTemp, L"%s_%d.bmp", pFileName, i);
+		wsprintf(szTemp, L"%s.bmp", pFileName);
 
 		pTex->LoadTexture(m_pEngine->GetHInst(), m_pEngine->GetHDC(), szTemp);
 		pClip->SetTextures(pTex);
+		
+		pClip->SetSpriteFrameWH(row, col);
 	}
 	m_AniSeqs.insert(make_pair(name, pClip));
 	return true;

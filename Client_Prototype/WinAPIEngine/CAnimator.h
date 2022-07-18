@@ -24,8 +24,12 @@ public:
 
 	void UpdateAnimation(float deltaTime);
 	void Render(CAPIEngine* pEngine, float x, float y);
+
 	bool AddAniSeq(const std::string& name,
-				   float timeInterval, int totalFrameCount, LPCWSTR pFileName, ANI_INFO isLoopOption = ANI_INFO::LOOP);
+				   float timeInterval, int totalFrameCount, LPCWSTR pFileName, ANI_INFO isLoopOption = ANI_INFO::LOOP
+					, ANI_SO spriteOption = ANI_SO::FRAME_FILE,
+				   int row = 1, int col = 1);
+
 
 	void SetDefaultAniSeq(const std::string& strDefaultAniSeq);
 	void PlayAni(const std::string& strAniSeq);

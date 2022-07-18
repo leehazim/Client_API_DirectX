@@ -53,6 +53,11 @@ public:
 		m_pTextBullet->LoadTexture(this->hInst, this->m_hDC, L"resources/bongbullet.bmp");
 		m_PFBullet = CreatePrefab<CBullet>(m_pTextBullet, 0.5f, 0.5f, SVector2D(400.0f, 500.0f)); 
 
+		CAnimator* pAniBullet = m_PFBullet->CreateAnimator("AnimBullet", this);
+		pAniBullet->SetOwnerObject(m_PFBullet);
+		pAniBullet->AddAniSeq("ani_idle_bullet", 0.01f, 4 * 8, L"resources/explosionFull", ANI_INFO::LOOP, ANI_SO::SHEET_FILE, 4, 8);
+		m_PFBullet->SetDefaultAniSeq("ani_idle_bullet");
+
 		// 적 prefab
 		m_pTextEnemy = new CTexture();
 		/*m_pTextEnemy->LoadTexture(this->hInst, this->m_hDC, L"resources/bongenemy.bmp");*/
@@ -329,7 +334,7 @@ public:
 			(*it)->Update(deltaTime);*/
 		
 		// 렌더링 파트
-		this->Clear(1.0f, 1.0f, 1.0f);
+		this->Clear(0.3f, 0.2f, 0.8f);
 	
 		m_pActor->Render();
 		for (it = m_Bullets.begin(); it != m_Bullets.end(); it++)
